@@ -1,0 +1,398 @@
+.adminToolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+}
+
+.adminSearchForm {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.adminSearchInput,
+.adminSelect,
+.adminInput,
+.adminTextarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 6px;
+    border: 1px solid #cfcfcf;
+    font: inherit;
+    background: #fff;
+    color: #222;
+}
+
+.adminSearchInput {
+    min-width: 280px;
+}
+
+.adminTextarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.btnPrimary,
+.btnSecondary,
+.btnSmall {
+    display: inline-block;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font: inherit;
+    text-decoration: none;
+    transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.btnPrimary {
+    background: #7b0f19;
+    color: #fff;
+    padding: 12px 16px;
+    font-weight: 700;
+}
+
+.btnPrimary:hover {
+    background: #5d0c13;
+}
+
+.btnSecondary {
+    background: #fff;
+    color: #7b0f19;
+    border: 1px solid #7b0f19;
+    padding: 12px 16px;
+    font-weight: 700;
+}
+
+.btnSecondary:hover {
+    background: #f8ecee;
+}
+
+.btnSmall {
+    background: #7b0f19;
+    color: #fff;
+    padding: 8px 12px;
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.btnSmall:hover {
+    background: #5d0c13;
+}
+
+.alertBar {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.alertBar.success {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #6ee7b7;
+}
+
+.alertBar.error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+.dataTableWrap {
+    overflow-x: auto;
+    margin-top: 18px;
+}
+
+.dataTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+}
+
+.dataTable th {
+    text-align: left;
+    background: #f3f3f3;
+    color: #222;
+    padding: 12px 14px;
+    border-bottom: 2px solid #dddddd;
+    white-space: nowrap;
+}
+
+.dataTable td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #eeeeee;
+    vertical-align: top;
+}
+
+.dataTable tr:hover td {
+    background: #fafafa;
+}
+
+.statusPill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.statusPill.active {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.statusPill.inactive {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.statusPill.featured {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.statusPill.standard {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+    gap: 16px 18px;
+    margin-top: 18px;
+}
+
+.formField {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.formField.full {
+    grid-column: 1 / -1;
+}
+
+.formField label {
+    font-weight: 700;
+}
+
+.formNote {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.checkboxRow {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+}
+
+.checkboxItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.optionSection {
+    margin-top: 26px;
+}
+
+.optionGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(170px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+    padding: 16px;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+.optionTitle {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.formActions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+}
+
+.pageCount {
+    color: #555;
+    margin-top: 10px;
+}
+
+.inlineCode {
+    font-family: Consolas, monospace;
+    font-size: 0.92rem;
+    background: #f4f4f4;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+body.theme-dark .adminSearchInput,
+body.theme-dark .adminSelect,
+body.theme-dark .adminInput,
+body.theme-dark .adminTextarea {
+    background: #0f172a;
+    color: #e5e7eb;
+    border-color: #334155;
+}
+
+body.theme-dark .btnPrimary,
+body.theme-dark .btnSmall {
+    background: #1d4ed8;
+}
+
+body.theme-dark .btnPrimary:hover,
+body.theme-dark .btnSmall:hover {
+    background: #1e40af;
+}
+
+body.theme-dark .btnSecondary {
+    background: #0f172a;
+    color: #93c5fd;
+    border-color: #60a5fa;
+}
+
+body.theme-dark .btnSecondary:hover {
+    background: #172554;
+}
+
+body.theme-dark .dataTable {
+    background: #0f172a;
+    border-color: #334155;
+}
+
+body.theme-dark .dataTable th {
+    background: #1f2937;
+    color: #e5e7eb;
+    border-bottom-color: #334155;
+}
+
+body.theme-dark .dataTable td {
+    border-bottom-color: #233044;
+    color: #e5e7eb;
+}
+
+body.theme-dark .dataTable tr:hover td {
+    background: #172033;
+}
+
+body.theme-dark .optionGrid {
+    background: #0f172a;
+    border-color: #334155;
+}
+
+body.theme-dark .formNote,
+body.theme-dark .pageCount {
+    color: #cbd5e1;
+}
+
+body.theme-dark .inlineCode {
+    background: #1f2937;
+    color: #e5e7eb;
+}
+
+body.theme-holiday .adminSearchInput,
+body.theme-holiday .adminSelect,
+body.theme-holiday .adminInput,
+body.theme-holiday .adminTextarea {
+    background: #fffdf9;
+    color: #2f241b;
+    border-color: #d8c4a1;
+}
+
+body.theme-holiday .btnPrimary,
+body.theme-holiday .btnSmall {
+    background: #0f5132;
+}
+
+body.theme-holiday .btnPrimary:hover,
+body.theme-holiday .btnSmall:hover {
+    background: #0b3f27;
+}
+
+body.theme-holiday .btnSecondary {
+    background: #fffdf9;
+    color: #0f5132;
+    border-color: #0f5132;
+}
+
+body.theme-holiday .btnSecondary:hover {
+    background: #f7efe4;
+}
+
+body.theme-holiday .dataTable {
+    background: #fffdf9;
+    border-color: #d8c4a1;
+}
+
+body.theme-holiday .dataTable th {
+    background: #f5ead9;
+    color: #2f241b;
+    border-bottom-color: #d8c4a1;
+}
+
+body.theme-holiday .dataTable td {
+    border-bottom-color: #eadcc6;
+}
+
+body.theme-holiday .dataTable tr:hover td {
+    background: #fff8ef;
+}
+
+body.theme-holiday .optionGrid {
+    background: #fffdf9;
+    border-color: #d8c4a1;
+}
+
+body.theme-holiday .formNote,
+body.theme-holiday .pageCount {
+    color: #4c3c2e;
+}
+
+body.theme-holiday .inlineCode {
+    background: #f5ead9;
+    color: #2f241b;
+}
+
+@media (max-width: 900px) {
+    .formGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .optionGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .adminToolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .adminSearchForm {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .adminSearchInput {
+        min-width: 0;
+    }
+}

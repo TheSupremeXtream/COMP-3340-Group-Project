@@ -33,11 +33,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($themes[$selected_theme])) {
         $message = 'Invalid theme selected.';
         $message_class = 'error';
-    } elseif (set_active_theme($selected_theme)) {
-        $message = $themes[$selected_theme]['label'] . ' is now active.';
     } else {
-        $message = 'Unable to update the active theme.';
-        $message_class = 'error';
+        try {
+            $saved = set_active_theme($selected_theme);
+
+            if ($saved) {
+                $message = $themes[$selected_theme]['label'] . ' is now active.';
+            } else {
+                $message = 'Unable to update the active theme. Check that store_db and site_settings exist.';
+                $message_class = 'error';
+            }
+        } catch (Throwable $e) {
+            $message = 'Error: ' . $e->getMessage();
+            $message_class = 'error';
+        }
     }
 }
 
@@ -65,6 +74,8 @@ $current_theme = get_active_theme();
                 <li><a href="../../index.php">Home</a></li>
                 <li><a href="../monitor.php">Monitor</a></li>
                 <li><a href="theme-settings.php">Templates</a></li>
+                <li><a href="products.php">Products</a></li>
+                <li><a href="users.php">Users</a></li>
             </ul>
         </div>
     </div>
