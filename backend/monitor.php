@@ -140,8 +140,8 @@ $check_time = date('Y-m-d H:i:s');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>System Monitor — <?= h(SITE_NAME) ?></title>
-    <link rel="stylesheet" href="assets/css/theme-<?= h($theme) ?>.css">
-    <link rel="stylesheet" href="assets/css/monitor.css">
+    <link rel="stylesheet" href="css/theme-<?= h($theme) ?>.css">
+    <link rel="stylesheet" href="css/monitor.css">
 </head>
 <body class="admin-monitor">
 
