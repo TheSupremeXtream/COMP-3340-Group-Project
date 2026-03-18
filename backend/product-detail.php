@@ -81,20 +81,39 @@ $option_labels = [
 </head>
 <body>
 
-<header class="site-header">
-    <div class="header-inner">
-        <a href="../index.html" class="site-brand">
-            <img src="images/logo.png" alt="<?= h(SITE_NAME) ?>" height="40">
-            <?= h(SITE_NAME) ?>
-        </a>
-        <nav class="site-nav">
-            <a href="../pages/products.html">Products</a>
-            <a href="../pages/About.html">About</a>
-            <a href="../pages/Help.html">Help</a>
-            <a href="../pages/Wiki.html">Wiki</a>
-        </nav>
+<div class="container">
+    <div class="navOuter">
+        <div class="navInner">
+            <a href="../index.php" class="banner">
+                <img src="../images/logo.png" alt="<?= h(SITE_NAME) ?>" height="60"><?= h(SITE_NAME) ?>
+            </a>
+            <ul class="navList">
+                <li><a href="../index.php">Home</a></li>
+                <li><a href="products.php">Products</a></li>
+                <li><a href="../pages/About.html">About</a></li>
+                <li><a href="../pages/Help.html">Help</a></li>
+                <li><a href="../pages/Wiki.html">Wiki</a></li>
+            </ul>
+            <ul class="login">
+                <li class="divider"></li>
+                <li><a href="../pages/login.html">Login</a></li>
+                <li><a href="../pages/login.html">Register</a></li>
+            </ul>
+            <ul class="cart">
+                <li class="divider"></li>
+                <li><a href="../cart.html">
+                    <img src="../images/Light_Mode_Cart.png" alt="Cart" height="60">
+                </a></li>
+            </ul>
+            <ul class="toggle">
+                <li class="divider"></li>
+                <li><a href="../toggle.php"><img src="../images/Sun.png" alt="Light" height="60"></a></li>
+                <li><a href="../toggle.php"><img src="../images/Moon.png" alt="Dark" height="60"></a></li>
+                <li><a href="../toggle.php"><img src="../images/Egg.png" alt="Holiday" height="60"></a></li>
+            </ul>
+        </div>
     </div>
-</header>
+</div>
 
 <main class="detail-main">
 
