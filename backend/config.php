@@ -3,11 +3,11 @@ define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'store_db');
-
-define('SITE_NAME', 'comp3340');
-define('BASE_URL',  'http://localhost/comp3340/');
+ 
+define('SITE_NAME', 'The Computer Store');
+define('BASE_URL',  'http://localhost/COMP-3340-Group-Project/');
 define('IMG_PATH',  BASE_URL . 'images/');
-
+ 
 function get_db(): PDO {
     static $pdo = null;
     if ($pdo === null) {
@@ -21,6 +21,9 @@ function get_db(): PDO {
     }
     return $pdo;
 }
+<<<<<<< HEAD
+ 
+=======
 
 function get_allowed_themes(): array {
     return ['light', 'dark', 'holiday'];
@@ -30,11 +33,17 @@ function normalize_theme(string $theme): string {
     return in_array($theme, get_allowed_themes(), true) ? $theme : 'light';
 }
 
+>>>>>>> 81013b994b1608451ab7f211ec3ec36064dd1873
 function get_active_theme(): string {
     try {
         $pdo  = get_db();
         $stmt = $pdo->query("SELECT setting_value FROM site_settings WHERE setting_key = 'active_theme' LIMIT 1");
         $row  = $stmt->fetch();
+<<<<<<< HEAD
+        return $row ? $row['setting_value'] : 'light';
+    } catch (PDOException $e) {
+        return 'light';
+=======
         return normalize_theme($row ? (string) $row['setting_value'] : 'light');
     } catch (PDOException $e) {
         return 'light';
@@ -73,13 +82,14 @@ function set_active_theme(string $theme): bool {
         ]);
     } catch (PDOException $e) {
         return false;
+>>>>>>> 81013b994b1608451ab7f211ec3ec36064dd1873
     }
 }
-
+ 
 function h(string $str): string {
     return htmlspecialchars($str, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
-
+ 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }

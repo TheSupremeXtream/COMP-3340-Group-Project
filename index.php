@@ -69,24 +69,25 @@ $cart_image = match ($theme) {
         <div class="featured">
             <h1>Featured Products:</h1>
             <div class="featuredProducts">
-                <a href="SDD.html">
-                    <img src="images/SSD.jpg" alt="SSD" height="60">Raspberry Pi SSD
+                <a href="backend/product-detail.php?id=2">
+                    <img src="backend/images/SSD.jpg" alt="Raspberry Pi SSD" height="60">Raspberry Pi SSD
                 </a>
-                <a href="Gaming_Mouse.html">
-                    <img src="images/Gaming_Mouse.jpg" alt="Gaming Mouse" height="60">Gaming Mouse
+                <a href="backend/product-detail.php?id=3">
+                    <img src="backend/images/Gaming_Mouse.jpg" alt="Gaming Mouse" height="60">Gaming Mouse
                 </a>
-                <a href="Red_Charger.html">
-                    <img src="images/Red_Charger.png" alt="Red Charger" height="60">Red Power Bank
+                <a href="backend/product-detail.php?id=15">
+                    <img src="backend/images/Blue_Charger.png" alt="Power Bank" height="60">Red Power Bank
                 </a>
-                <a href="USB_Type-C_Cable.html">
-                    <img src="images/USB_Type-C_Cable.jpg" alt="USB Type-C Cable" height="60">USB Type-C Cable
+                <a href="backend/product-detail.php?id=13">
+                    <img src="backend/images/USB_Type-C_Cable.jpg" alt="USB-C Cable" height="60">USB Type-C Cable
                 </a>
-                <a href="Gaming_Headset.html">
-                    <img src="images/Gaming_Headset.jpg" alt="Gaming Headset" height="60">Gaming Headset
+                <a href="backend/product-detail.php?id=5">
+                    <img src="backend/images/Gaming_Headset.jpg" alt="Gaming Headset" height="60">Gaming Headset
                 </a>
-                <a href="Controller.html">
-                    <img src="images/Blue_Controller.png" alt="Blue Controller" height="60">Blue Controller
-                </a>
+                <a href="backend/product-detail.php?id=19">
+                    <img src="backend/images/Red_Controller.png" alt="Controller" height="60">Blue Controller
+                    </a>
+
                 <p>Our 6 most popular products!</p>
             </div>
         </div>

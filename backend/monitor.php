@@ -32,7 +32,7 @@ function check_catalogue(): array {
 
 function check_file_storage(): array {
     $start = microtime(true);
-    $dir   = __DIR__ . '/images';
+    $dir   = __DIR__ . '/assets/images';
     $ms    = (int) round((microtime(true) - $start) * 1000);
     if (is_dir($dir) && is_readable($dir)) {
         $count = count(glob($dir . '/*.{jpg,jpeg,png,gif,webp}', GLOB_BRACE));
@@ -150,14 +150,24 @@ $check_time = date('Y-m-d H:i:s');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
+<<<<<<< HEAD
+    <title>System Monitor — <?= h(SITE_NAME) ?></title>
+    <link rel="stylesheet" href="../styles/<?= h($theme) ?>.css">
+    <link rel="stylesheet" href="assets/css/monitor.css">
+=======
     <title>System Monitor — The Computer Store</title>
     <link rel="stylesheet" href="../styles/<?= h($theme) ?>.css">
     <link rel="stylesheet" href="monitor.css">
+>>>>>>> 81013b994b1608451ab7f211ec3ec36064dd1873
 </head>
 <body class="admin-monitor">
 
 <header class="admin-header">
+<<<<<<< HEAD
+    <a href="admin/dashboard.php" class="brand">🖥️ <?= h(SITE_NAME) ?> — Admin</a>
+=======
     <a href="../index.php" class="brand">⚡ The Computer Store — Admin</a>
+>>>>>>> 81013b994b1608451ab7f211ec3ec36064dd1873
     <nav class="admin-nav">
         <a href="admin/theme-settings.php">Templates</a>
         <a href="admin/products.php">Products</a>
