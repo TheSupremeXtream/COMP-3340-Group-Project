@@ -107,12 +107,22 @@ foreach ($services as $name => $fn) {
     $result         = $fn();
     $result['name'] = $name;
     $results[]      = $result;
-    if ($result['status'] === 'offline')  $any_offline  = true;
-    if ($result['status'] === 'degraded') $any_degraded = true;
+    if ($result['status'] === 'offline') {
+        $any_offline = true;
+    }
+    if ($result['status'] === 'degraded') {
+        $any_degraded = true;
+    }
     try {
         $stmt = get_db()->prepare('INSERT INTO service_log (service_name, status, response_ms, detail) VALUES (:name, :status, :ms, :detail)');
-        $stmt->execute([':name' => $name, ':status' => $result['status'], ':ms' => $result['response_ms'], ':detail' => $result['detail']]);
-    } catch (PDOException $e) {}
+        $stmt->execute([
+            ':name' => $name,
+            ':status' => $result['status'],
+            ':ms' => $result['response_ms'],
+            ':detail' => $result['detail'],
+        ]);
+    } catch (PDOException $e) {
+    }
 }
 
 $overall_status = 'All Systems Operational';
@@ -128,7 +138,8 @@ if ($any_offline) {
 $log_rows = [];
 try {
     $log_rows = get_db()->query('SELECT * FROM service_log ORDER BY checked_at DESC LIMIT 20')->fetchAll();
-} catch (PDOException $e) {}
+} catch (PDOException $e) {
+}
 
 $theme      = get_active_theme();
 $check_time = date('Y-m-d H:i:s');
@@ -149,6 +160,8 @@ $check_time = date('Y-m-d H:i:s');
     <a href="../index.php" class="brand">⚡ The Computer Store — Admin</a>
     <nav class="admin-nav">
         <a href="admin/theme-settings.php">Templates</a>
+        <a href="admin/products.php">Products</a>
+        <a href="admin/users.php">Users</a>
         <a href="monitor.php" class="active">Monitor</a>
     </nav>
 </header>
@@ -178,26 +191,34 @@ $check_time = date('Y-m-d H:i:s');
 
     <section class="services-grid">
         <?php foreach ($results as $svc):
-            $badge_class = match($svc['status']) { 'online' => 'badge-online', 'degraded' => 'badge-degraded', default => 'badge-offline' };
-            $badge_label = match($svc['status']) { 'online' => '● Online', 'degraded' => '◐ Degraded', default => '○ Offline' };
+            $badge_class = match($svc['status']) {
+                'online' => 'badge-online',
+                'degraded' => 'badge-degraded',
+                default => 'badge-offline'
+            };
+            $badge_label = match($svc['status']) {
+                'online' => '● Online',
+                'degraded' => '◐ Degraded',
+                default => '○ Offline'
+            };
         ?>
-        <div class="service-card <?= h($badge_class) ?>">
-            <div class="card-top">
-                <span class="service-name"><?= h($svc['name']) ?></span>
-                <span class="status-badge <?= h($badge_class) ?>"><?= h($badge_label) ?></span>
+            <div class="service-card <?= h($badge_class) ?>">
+                <div class="card-top">
+                    <span class="service-name"><?= h($svc['name']) ?></span>
+                    <span class="status-badge <?= h($badge_class) ?>"><?= h($badge_label) ?></span>
+                </div>
+                <div class="card-detail"><?= h($svc['detail']) ?></div>
+                <div class="card-meta">Response: <strong><?= $svc['response_ms'] ?>ms</strong></div>
             </div>
-            <div class="card-detail"><?= h($svc['detail']) ?></div>
-            <div class="card-meta">Response: <strong><?= $svc['response_ms'] ?>ms</strong></div>
-        </div>
         <?php endforeach; ?>
     </section>
 
     <?php
-        $count_online   = count(array_filter($results, fn($r) => $r['status'] === 'online'));
-        $count_degraded = count(array_filter($results, fn($r) => $r['status'] === 'degraded'));
-        $count_offline  = count(array_filter($results, fn($r) => $r['status'] === 'offline'));
-        $total          = count($results);
-        $uptime_pct     = $total > 0 ? round(($count_online / $total) * 100) : 0;
+    $count_online   = count(array_filter($results, fn($r) => $r['status'] === 'online'));
+    $count_degraded = count(array_filter($results, fn($r) => $r['status'] === 'degraded'));
+    $count_offline  = count(array_filter($results, fn($r) => $r['status'] === 'offline'));
+    $total          = count($results);
+    $uptime_pct     = $total > 0 ? round(($count_online / $total) * 100) : 0;
     ?>
     <section class="stats-row">
         <div class="stat-box online"><div class="stat-num"><?= $count_online ?></div><div class="stat-label">Online</div></div>
@@ -211,25 +232,25 @@ $check_time = date('Y-m-d H:i:s');
         <?php if (empty($log_rows)): ?>
             <p class="no-history">No history yet — run a check to populate.</p>
         <?php else: ?>
-        <div class="table-scroll">
-        <table class="history-table">
-            <thead>
-                <tr><th>#</th><th>Service</th><th>Status</th><th>Response (ms)</th><th>Detail</th><th>Checked At</th></tr>
-            </thead>
-            <tbody>
-            <?php foreach ($log_rows as $row): ?>
-                <tr class="row-<?= h($row['status']) ?>">
-                    <td><?= (int) $row['id'] ?></td>
-                    <td><?= h($row['service_name']) ?></td>
-                    <td><span class="status-badge badge-<?= h($row['status']) ?>"><?= h(ucfirst($row['status'])) ?></span></td>
-                    <td><?= (int) $row['response_ms'] ?></td>
-                    <td><?= h($row['detail']) ?></td>
-                    <td><?= h($row['checked_at']) ?></td>
-                </tr>
-            <?php endforeach; ?>
-            </tbody>
-        </table>
-        </div>
+            <div class="table-scroll">
+                <table class="history-table">
+                    <thead>
+                        <tr><th>#</th><th>Service</th><th>Status</th><th>Response (ms)</th><th>Detail</th><th>Checked At</th></tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($log_rows as $row): ?>
+                        <tr class="row-<?= h($row['status']) ?>">
+                            <td><?= (int) $row['id'] ?></td>
+                            <td><?= h($row['service_name']) ?></td>
+                            <td><span class="status-badge badge-<?= h($row['status']) ?>"><?= h(ucfirst($row['status'])) ?></span></td>
+                            <td><?= (int) $row['response_ms'] ?></td>
+                            <td><?= h($row['detail']) ?></td>
+                            <td><?= h($row['checked_at']) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         <?php endif; ?>
     </section>
 
@@ -247,7 +268,10 @@ $check_time = date('Y-m-d H:i:s');
     const tick = setInterval(() => {
         countdown--;
         timerEl.textContent = `Auto-refreshing in ${countdown}s…`;
-        if (countdown <= 0) { clearInterval(tick); window.location.reload(); }
+        if (countdown <= 0) {
+            clearInterval(tick);
+            window.location.reload();
+        }
     }, 1000);
 </script>
 
