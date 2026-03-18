@@ -139,20 +139,17 @@ $check_time = date('Y-m-d H:i:s');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>System Monitor — <?= h(SITE_NAME) ?></title>
-    <link rel="stylesheet" href="assets/css/theme-<?= h($theme) ?>.css">
-    <link rel="stylesheet" href="assets/css/monitor.css">
+    <title>System Monitor — The Computer Store</title>
+    <link rel="stylesheet" href="../styles/<?= h($theme) ?>.css">
+    <link rel="stylesheet" href="monitor.css">
 </head>
 <body class="admin-monitor">
 
 <header class="admin-header">
-    <a href="admin/dashboard.php" class="brand">⚡ <?= h(SITE_NAME) ?> — Admin</a>
+    <a href="../index.php" class="brand">⚡ The Computer Store — Admin</a>
     <nav class="admin-nav">
-        <a href="admin/dashboard.php">Dashboard</a>
-        <a href="admin/products.php">Products</a>
-        <a href="admin/users.php">Users</a>
+        <a href="admin/theme-settings.php">Templates</a>
         <a href="monitor.php" class="active">Monitor</a>
-        <a href="logout.php">Log Out</a>
     </nav>
 </header>
 
@@ -239,7 +236,7 @@ $check_time = date('Y-m-d H:i:s');
 </main>
 
 <footer class="admin-footer">
-    <p>&copy; <?= date('Y') ?> <?= h(SITE_NAME) ?> — Admin Panel</p>
+    <p>&copy; <?= date('Y') ?> The Computer Store — Admin Panel</p>
 </footer>
 
 <script>

@@ -1,0 +1,205 @@
+.themeGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+    margin-top: 18px;
+}
+
+.themeCard {
+    background: #fafafa;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    padding: 18px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+body.theme-dark .themeCard {
+    background: #0f172a;
+    border-color: #334155;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+}
+
+body.theme-holiday .themeCard {
+    background: #fffdf8;
+    border-color: #d8c4a1;
+}
+
+.themeCardTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.themeCard h2 {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.themeCard p {
+    margin: 0;
+    color: #444;
+    font-size: 0.95rem;
+}
+
+body.theme-dark .themeCard p {
+    color: #cbd5e1;
+}
+
+body.theme-holiday .themeCard p {
+    color: #4c3c2e;
+}
+
+.themeSwatch {
+    height: 96px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.swatch-light {
+    background: linear-gradient(135deg, #ffffff 0%, #f0d7db 100%);
+}
+
+.swatch-dark {
+    background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%);
+}
+
+.swatch-holiday {
+    background: linear-gradient(135deg, #0f5132 0%, #fff3e0 55%, #a61b29 100%);
+}
+
+.activePill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.28rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+body.theme-light .activePill {
+    background: #f7d7dc;
+    color: #7b0f19;
+}
+
+body.theme-dark .activePill {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+body.theme-holiday .activePill {
+    background: #dff2e6;
+    color: #0f5132;
+}
+
+.btnPrimary {
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.18s ease, opacity 0.18s ease;
+}
+
+body.theme-light .btnPrimary {
+    background: #7b0f19;
+    color: #fff;
+}
+
+body.theme-light .btnPrimary:hover {
+    background: #5d0c13;
+}
+
+body.theme-dark .btnPrimary {
+    background: #1d4ed8;
+    color: #fff;
+}
+
+body.theme-dark .btnPrimary:hover {
+    background: #1e40af;
+}
+
+body.theme-holiday .btnPrimary {
+    background: #0f5132;
+    color: #fff;
+}
+
+body.theme-holiday .btnPrimary:hover {
+    background: #0b3f27;
+}
+
+.btnPrimary[disabled] {
+    cursor: default;
+    opacity: 0.75;
+}
+
+body.theme-light .themeCard.isActive {
+    border-color: #7b0f19;
+    box-shadow: 0 0 0 2px rgba(123, 15, 25, 0.12);
+}
+
+body.theme-dark .themeCard.isActive {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.16);
+}
+
+body.theme-holiday .themeCard.isActive {
+    border-color: #0f5132;
+    box-shadow: 0 0 0 2px rgba(15, 81, 50, 0.12);
+}
+
+.alertBar {
+    margin-top: 18px;
+    padding: 0.85rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.alertBar.success {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #6ee7b7;
+}
+
+.alertBar.error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+.currentTheme {
+    margin-top: 18px;
+    font-weight: 700;
+}
+
+.templateNote {
+    margin-top: 10px;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+body.theme-dark .currentTheme,
+body.theme-dark .templateNote {
+    color: #cbd5e1;
+}
+
+body.theme-holiday .currentTheme,
+body.theme-holiday .templateNote {
+    color: #4c3c2e;
+}
+
+@media (max-width: 768px) {
+    .themeGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .themeCardTop {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
