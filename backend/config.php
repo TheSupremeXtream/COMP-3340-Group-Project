@@ -21,15 +21,68 @@ function get_db(): PDO {
     }
     return $pdo;
 }
+<<<<<<< HEAD
  
+=======
+
+function get_allowed_themes(): array {
+    return ['light', 'dark', 'holiday'];
+}
+
+function normalize_theme(string $theme): string {
+    return in_array($theme, get_allowed_themes(), true) ? $theme : 'light';
+}
+
+>>>>>>> 81013b994b1608451ab7f211ec3ec36064dd1873
 function get_active_theme(): string {
     try {
         $pdo  = get_db();
-        $stmt = $pdo->query("SELECT setting_value FROM site_settings WHERE setting_key = 'active_theme'");
+        $stmt = $pdo->query("SELECT setting_value FROM site_settings WHERE setting_key = 'active_theme' LIMIT 1");
         $row  = $stmt->fetch();
+<<<<<<< HEAD
         return $row ? $row['setting_value'] : 'light';
     } catch (PDOException $e) {
         return 'light';
+=======
+        return normalize_theme($row ? (string) $row['setting_value'] : 'light');
+    } catch (PDOException $e) {
+        return 'light';
+    }
+}
+
+function set_active_theme(string $theme): bool {
+    $theme = normalize_theme($theme);
+
+    try {
+        $pdo = get_db();
+
+        $check = $pdo->prepare("SELECT COUNT(*) FROM site_settings WHERE setting_key = :setting_key");
+        $check->execute([':setting_key' => 'active_theme']);
+        $exists = (int) $check->fetchColumn() > 0;
+
+        if ($exists) {
+            $stmt = $pdo->prepare("
+                UPDATE site_settings
+                SET setting_value = :theme
+                WHERE setting_key = :setting_key
+            ");
+            return $stmt->execute([
+                ':theme' => $theme,
+                ':setting_key' => 'active_theme',
+            ]);
+        }
+
+        $stmt = $pdo->prepare("
+            INSERT INTO site_settings (setting_key, setting_value)
+            VALUES (:setting_key, :theme)
+        ");
+        return $stmt->execute([
+            ':setting_key' => 'active_theme',
+            ':theme' => $theme,
+        ]);
+    } catch (PDOException $e) {
+        return false;
+>>>>>>> 81013b994b1608451ab7f211ec3ec36064dd1873
     }
 }
  
