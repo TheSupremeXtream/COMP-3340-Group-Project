@@ -78,12 +78,11 @@ $theme = get_active_theme();
     <meta name="keywords"    content="computer accessories, cables, USB, storage, headphones, gaming, tech store">
     <meta name="robots"      content="index, follow">
     <link rel="canonical"    href="<?= h(BASE_URL) ?>products.php">
-    <link rel="stylesheet"   href="assets/css/theme-<?= h($theme) ?>.css">
-    <link rel="stylesheet"   href="assets/css/products.css">
+    <link rel="stylesheet"   href="css/theme-<?= h($theme) ?>.css">
+    <link rel="stylesheet"   href="css/products.css">
 </head>
 <body>
 
-<?php include __DIR__ . '/includes/header.php'; ?>
 
 <main class="catalogue-main">
 
@@ -137,11 +136,11 @@ $theme = get_active_theme();
             <?php endif; ?>
 
             <a href="product-detail.php?id=<?= (int) $p['id'] ?>">
-                <img src="assets/images/<?= h($p['image_file'] ?? 'placeholder.jpg') ?>"
+                <img src="images/<?= h($p['image_file'] ?? 'placeholder.jpg') ?>"
                      alt="<?= h($p['title']) ?>"
                      class="product-img"
                      loading="lazy"
-                     onerror="this.src='assets/images/placeholder.jpg'">
+                     onerror="this.src='images/placeholder.jpg'">
             </a>
 
             <div class="product-info">
@@ -186,7 +185,6 @@ $theme = get_active_theme();
 
 </main>
 
-<?php include __DIR__ . '/includes/footer.php'; ?>
-<script src="assets/js/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
