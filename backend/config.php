@@ -5,7 +5,7 @@ define('DB_PASS', '');
 define('DB_NAME', 'store_db');
 
 define('SITE_NAME', 'comp3340');
-define('BASE_URL',  'http://localhost/comp3340PPPPPPPPPP/');
+define('BASE_URL',  'http://localhost/comp3340PPPPPPPPPPasda/');
 define('IMG_PATH',  BASE_URL . 'assets/images/');
 
 function get_db(): PDO {
