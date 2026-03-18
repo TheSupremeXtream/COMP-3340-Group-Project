@@ -32,7 +32,7 @@ function check_catalogue(): array {
 
 function check_file_storage(): array {
     $start = microtime(true);
-    $dir   = __DIR__ . '/images';
+    $dir   = __DIR__ . '/assets/images';
     $ms    = (int) round((microtime(true) - $start) * 1000);
     if (is_dir($dir) && is_readable($dir)) {
         $count = count(glob($dir . '/*.{jpg,jpeg,png,gif,webp}', GLOB_BRACE));
@@ -140,13 +140,13 @@ $check_time = date('Y-m-d H:i:s');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>System Monitor — <?= h(SITE_NAME) ?></title>
-    <link rel="stylesheet" href="css/theme-<?= h($theme) ?>.css">
-    <link rel="stylesheet" href="css/monitor.css">
+    <link rel="stylesheet" href="../styles/<?= h($theme) ?>.css">
+    <link rel="stylesheet" href="assets/css/monitor.css">
 </head>
 <body class="admin-monitor">
 
 <header class="admin-header">
-    <a href="admin/dashboard.php" class="brand">⚡ <?= h(SITE_NAME) ?> — Admin</a>
+    <a href="admin/dashboard.php" class="brand">🖥️ <?= h(SITE_NAME) ?> — Admin</a>
     <nav class="admin-nav">
         <a href="admin/dashboard.php">Dashboard</a>
         <a href="admin/products.php">Products</a>
