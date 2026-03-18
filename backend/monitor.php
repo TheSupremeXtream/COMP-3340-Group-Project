@@ -32,7 +32,7 @@ function check_catalogue(): array {
 
 function check_file_storage(): array {
     $start = microtime(true);
-    $dir   = __DIR__ . '/assets/images';
+    $dir   = __DIR__ . '/images';
     $ms    = (int) round((microtime(true) - $start) * 1000);
     if (is_dir($dir) && is_readable($dir)) {
         $count = count(glob($dir . '/*.{jpg,jpeg,png,gif,webp}', GLOB_BRACE));
