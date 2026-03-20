@@ -85,7 +85,7 @@ $cart_image = match ($theme) {
                     <img src="backend/images/Gaming_Headset.jpg" alt="Gaming Headset" height="60">Gaming Headset
                 </a>
 
-                <p>Our 6 most popular products!</p>
+                <p>Our 5 most popular products!</p>
             </div>
         </div>
 
