@@ -38,7 +38,7 @@ $cart_image = match ($theme) {
                 <ul class="cart">
                     <li class="divider"></li>
                     <li><a href="cart.html">
-                        <img src="images/<?= h($cart_image) ?>" alt="Cart" height="60">
+                        <img src="images/Dark_Mode_Cart.png" alt="Cart" height="60">
                     </a></li>
                 </ul>
                 <ul class="toggle">
@@ -84,9 +84,6 @@ $cart_image = match ($theme) {
                 <a href="backend/product-detail.php?id=5">
                     <img src="backend/images/Gaming_Headset.jpg" alt="Gaming Headset" height="60">Gaming Headset
                 </a>
-                <a href="backend/product-detail.php?id=19">
-                    <img src="backend/images/Red_Controller.png" alt="Controller" height="60">Blue Controller
-                    </a>
 
                 <p>Our 6 most popular products!</p>
             </div>
