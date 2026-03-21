@@ -51,7 +51,7 @@ $cart_image = match ($theme) {
                 </ul>
                 <ul class="login">
                     <li class="divider"></li>
-                    <li><a href="login.html">Login</a></li>
+                    <li><a href="login.php">Login</a></li>
                     <li><a href="login.html">Register</a></li>
                 </ul>
                 <ul class="cart">

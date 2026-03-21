@@ -16,6 +16,25 @@ $cart_image = match ($theme) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Computer Store</title>
     <link rel="stylesheet" href="../styles/<?= h($theme) ?>.css">
+    <style>
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        button:hover {
+            background: #4f0910;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+
 </head>
 <body>
     <div class="container">
@@ -57,18 +76,19 @@ $cart_image = match ($theme) {
         </div>
     </div>
 
+    <!-- Currently is not linked to user database -->
     <div class="containerIntro">
-        <div class="introText">
-            <h1>Welcome to The Computer Store!</h1>
-            <p class="intro">The Computer Store is your number 1 place to enhance your PC gaming experience.</p>
-            <p class="intro">Our online store offers a wide variety of products from PC gaming gear to PC parts.</br>
-            Our goal is to provide users with a user-friendly platform where they can explore items</br>
-            such as gaming mice, headsets, controllers, and other accessories, as well as PC parts</br>
-            like Ethernet cables, external storage devices, and more!
-            </p>
-            <p class="intro">Our store serves as a convenient hub for gamers, students, and computer users alike.</br>
-            Whatever you might be looking for, I guarantee that our store has what you are looking for! 
-            </p>
+        <div class="introText" style="text-align: center;">
+            <h2>Login</h2>
+            <form style="display: inline-block; text-align: left;">
+                <label class="intro" for="name">Username:</label>
+                <input type="text" id="name" required>
+                </br></br>
+                <label class="intro" for="password">Password:</label>
+                <input type="password" id="password" required>
+                </br></br>
+                <button class="intro" type="submit" style="color: #fff; display: block; margin: 0 auto;">Login</button>
+            </form>
         </div>
     </div>
 
