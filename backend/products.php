@@ -92,8 +92,8 @@ $theme = get_active_theme();
         <nav class="site-nav">
             <a href="../index.php">Home</a>
             <a href="products.php" class="active">Products</a>
-            <a href="../pages/About.html">About</a>
-            <a href="../pages/Help.html">Help</a>
+            <a href="../pages/About.php">About</a>
+            <a href="../pages/contactUs.php">Contact Us</a>
             <a href="../pages/Wiki.html">Wiki</a>
         </nav>
     </div>

@@ -27,7 +27,7 @@ $cart_image = match ($theme) {
                 <ul class="navList">
                     <li><a href="backend/products.php">Products</a></li>
                     <li><a href="pages/About.php">About</a></li>
-                    <li><a href="pages/Help.html">Help</a></li>
+                    <li><a href="pages/contactUs.php">Contact Us</a></li>
                     <li><a href="pages/Wiki.html">Wiki</a></li>
                 </ul>
                 <ul class="login">
