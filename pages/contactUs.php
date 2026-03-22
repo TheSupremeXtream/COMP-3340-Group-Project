@@ -28,6 +28,10 @@ $cart_image = match ($theme) {
             transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
         }
 
+        input {
+            float: right;
+        }
+
         button:hover {
             background: #4f0910;
             transform: translateY(-2px);
@@ -52,7 +56,7 @@ $cart_image = match ($theme) {
                 <ul class="login">
                     <li class="divider"></li>
                     <li><a href="login.php">Login</a></li>
-                    <li><a href="login.html">Register</a></li>
+                    <li><a href="register.php">Register</a></li>
                 </ul>
                 <ul class="cart">
                     <li class="divider"></li>

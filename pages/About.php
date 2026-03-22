@@ -33,7 +33,7 @@ $cart_image = match ($theme) {
                 <ul class="login">
                     <li class="divider"></li>
                     <li><a href="login.php">Login</a></li>
-                    <li><a href="login.html">Register</a></li>
+                    <li><a href="register.php">Register</a></li>
                 </ul>
                 <ul class="cart">
                     <li class="divider"></li>

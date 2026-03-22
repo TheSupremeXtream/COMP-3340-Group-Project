@@ -80,18 +80,23 @@ $cart_image = match ($theme) {
         </div>
     </div>
 
-    <!-- Currently is not linked to user database -->
     <div class="containerIntro">
         <div class="introText" style="text-align: center;">
-            <h2>Login</h2>
+            <h2>Register Account</h2>
             <form style="display: inline-block; text-align: left;">
-                <label class="intro" for="username">Username:</label>
+                <label class="intro" for="fullname">Full Name:</label>
+                <input type="text" id="fullname" required>
+                </br></br>
+                <label class="intro" for="username">Userame:</label>
                 <input type="text" id="username" required>
+                </br></br>
+                <label class="intro" for="email">Email:</label>
+                <input type="email" id="email" required>
                 </br></br>
                 <label class="intro" for="password">Password:</label>
                 <input type="password" id="password" required>
                 </br></br>
-                <button class="intro" type="submit" style="color: #fff; display: block; margin: 0 auto;">Login</button>
+                <button class="intro" type="submit" style="color: #fff; display: block; margin: 0 auto;">Create Account</button>
             </form>
         </div>
     </div>
