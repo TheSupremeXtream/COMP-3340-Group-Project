@@ -15,6 +15,9 @@ $cart_image = match ($theme) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Computer Store</title>
+    <meta name="description" content="Page describing business case. In our case, a PC gaming products and parts store.">
+    <meta name="keywords" content="About Us, About, PC Store, Gaming Accessories">
+    <meta name="authors" content="Ronit Mahajan, Shameer Sheikh, Raphael Ceradoy, David Woo">
     <link rel="stylesheet" href="../styles/<?= h($theme) ?>.css">
 </head>
 <body>

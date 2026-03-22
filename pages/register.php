@@ -15,6 +15,9 @@ $cart_image = match ($theme) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Computer Store</title>
+    <meta name="description" content="Page for registering/creating a user account">
+    <meta name="keywords" content="Create Account, Register Account, Accounts">
+    <meta name="authors" content="Ronit Mahajan, Shameer Sheikh, Raphael Ceradoy, David Woo">
     <link rel="stylesheet" href="../styles/<?= h($theme) ?>.css">
     <style>
         button {
