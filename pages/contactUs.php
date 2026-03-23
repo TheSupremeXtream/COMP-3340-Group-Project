@@ -3,6 +3,39 @@ require_once __DIR__ . '/../backend/config.php';
 
 $theme = get_active_theme();
 $cart_image = get_theme_cart_image();
+
+$name = '';
+$email = '';
+$subject = '';
+$message_text = '';
+
+$error = '';
+$success = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = trim($_POST['name'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $subject = trim($_POST['subject'] ?? '');
+    $message_text = trim($_POST['message'] ?? '');
+
+    if ($name === '' || $email === '' || $subject === '' || $message_text === '') {
+        $error = 'Please fill in all fields.';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = 'Please enter a valid email address.';
+    } elseif (mb_strlen($name) > 120) {
+        $error = 'Name is too long.';
+    } elseif (mb_strlen($subject) > 150) {
+        $error = 'Subject is too long.';
+    } elseif (mb_strlen($message_text) < 10) {
+        $error = 'Message must be at least 10 characters long.';
+    } else {
+        $success = 'Your message has been submitted successfully for this project demo.';
+        $name = '';
+        $email = '';
+        $subject = '';
+        $message_text = '';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,25 +97,33 @@ $cart_image = get_theme_cart_image();
                 Send us a message if you have questions about products, orders, or the website.
             </p>
 
-            <form method="post" action="#" class="simpleForm">
+            <?php if ($error !== ''): ?>
+                <div class="simpleFormAlert error"><?= h($error) ?></div>
+            <?php endif; ?>
+
+            <?php if ($success !== ''): ?>
+                <div class="simpleFormAlert success"><?= h($success) ?></div>
+            <?php endif; ?>
+
+            <form method="post" action="contactUs.php" class="simpleForm">
                 <div class="simpleFormRow">
                     <label class="simpleFormLabel" for="name">Name:</label>
-                    <input class="simpleFormInput" type="text" id="name" name="name" required>
+                    <input class="simpleFormInput" type="text" id="name" name="name" value="<?= h($name) ?>" required>
                 </div>
 
                 <div class="simpleFormRow">
                     <label class="simpleFormLabel" for="email">Email:</label>
-                    <input class="simpleFormInput" type="email" id="email" name="email" required>
+                    <input class="simpleFormInput" type="email" id="email" name="email" value="<?= h($email) ?>" required>
                 </div>
 
                 <div class="simpleFormRow">
                     <label class="simpleFormLabel" for="subject">Subject:</label>
-                    <input class="simpleFormInput" type="text" id="subject" name="subject" required>
+                    <input class="simpleFormInput" type="text" id="subject" name="subject" value="<?= h($subject) ?>" required>
                 </div>
 
                 <div class="simpleFormRow">
                     <label class="simpleFormLabel" for="message">Message:</label>
-                    <textarea class="simpleFormTextarea" id="message" name="message" rows="5" required></textarea>
+                    <textarea class="simpleFormTextarea" id="message" name="message" rows="5" required><?= h($message_text) ?></textarea>
                 </div>
 
                 <button class="simpleFormButton" type="submit">Send Message</button>

@@ -70,6 +70,7 @@ if ($db_error || !$product) {
 
 $theme = get_active_theme();
 $cart_image = get_theme_cart_image();
+$product_image = product_image_filename($product['image_file']);
 
 $option_labels = [
     'storage' => 'Storage',
@@ -150,9 +151,8 @@ $option_labels = [
             <div class="main-image-wrap">
                 <img
                     id="main-image"
-                    src="images/<?= h($product['image_file'] ?: 'placeholder.jpg') ?>"
+                    src="images/<?= h($product_image) ?>"
                     alt="<?= h($product['title']) ?>"
-                    onerror="this.src='images/placeholder.jpg'"
                 >
             </div>
 
@@ -236,11 +236,11 @@ $option_labels = [
 
             <div class="related-grid">
                 <?php foreach ($related as $r): ?>
+                    <?php $related_image = product_image_filename($r['image_file']); ?>
                     <a href="product-detail.php?id=<?= (int) $r['id'] ?>" class="related-card">
                         <img
-                            src="images/<?= h($r['image_file'] ?: 'placeholder.jpg') ?>"
+                            src="images/<?= h($related_image) ?>"
                             alt="<?= h($r['title']) ?>"
-                            onerror="this.src='images/placeholder.jpg'"
                         >
 
                         <div class="related-info">

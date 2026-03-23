@@ -123,7 +123,6 @@ $page_suffix = $query_string !== '' ? '&' . $query_string : '';
                 </a>
 
                 <ul class="navList">
-                    <li><a href="../index.php">Home</a></li>
                     <li><a href="products.php">Products</a></li>
                     <li><a href="../pages/About.php">About</a></li>
                     <li><a href="../pages/contactUs.php">Contact Us</a></li>
@@ -164,7 +163,7 @@ $page_suffix = $query_string !== '' ? '&' . $query_string : '';
         </div>
 
         <?php if ($db_error): ?>
-            <div class="alert alert-error">⚠️ <?= h($db_error) ?></div>
+            <div class="alert-error">⚠️ <?= h($db_error) ?></div>
         <?php endif; ?>
 
         <form method="GET" action="products.php" class="filters-form">
@@ -209,19 +208,19 @@ $page_suffix = $query_string !== '' ? '&' . $query_string : '';
         <?php else: ?>
             <div class="products-grid">
                 <?php foreach ($products as $p): ?>
+                    <?php $product_image = product_image_filename($p['image_file']); ?>
                     <article class="product-card <?= (int) $p['is_featured'] === 1 ? 'featured' : '' ?>">
 
                         <?php if ((int) $p['is_featured'] === 1): ?>
                             <span class="badge-featured">⭐ Featured</span>
                         <?php endif; ?>
 
-                        <a href="product-detail.php?id=<?= (int) $p['id'] ?>">
+                        <a href="product-detail.php?id=<?= (int) $p['id'] ?>" class="product-media">
                             <img
-                                src="images/<?= h($p['image_file'] ?: 'placeholder.jpg') ?>"
+                                src="images/<?= h($product_image) ?>"
                                 alt="<?= h($p['title']) ?>"
                                 class="product-img"
                                 loading="lazy"
-                                onerror="this.src='images/placeholder.jpg'"
                             >
                         </a>
 
@@ -232,8 +231,8 @@ $page_suffix = $query_string !== '' ? '&' . $query_string : '';
                                 <a href="product-detail.php?id=<?= (int) $p['id'] ?>"><?= h($p['title']) ?></a>
                             </h2>
 
-                            <p class="product-author">by <?= h($p['brand']) ?></p>
-                            <p class="product-desc"><?= h(mb_strimwidth((string) $p['description'], 0, 100, '…')) ?></p>
+                            <p class="product-brand">by <?= h($p['brand']) ?></p>
+                            <p class="product-desc"><?= h(mb_strimwidth((string) $p['description'], 0, 110, '…')) ?></p>
 
                             <div class="product-footer">
                                 <span class="product-price">$<?= number_format((float) $p['base_price'], 2) ?></span>

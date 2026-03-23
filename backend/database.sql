@@ -33,26 +33,26 @@ CREATE TABLE IF NOT EXISTS products (
 ) ENGINE=InnoDB;
 
 INSERT INTO products (category_id, title, brand, description, base_price, stock, image_file, is_featured) VALUES
-(1, 'External HDD',             'Seagate',       'Portable external hard drive, USB 3.0, compact and reliable for backups and file transfers.',        59.99,  80, 'external-hdd.jpg',          1),
-(1, 'Raspberry Pi SSD',         'SanDisk',       'High-speed SSD designed for Raspberry Pi and single-board computers, fast boot times.',              29.99,  60, 'raspberry-pi-ssd.jpg',      0),
-(3, 'Computer Mouse',           'Logitech',      'Ergonomic computer mouse, smooth tracking on all surfaces, comfortable for long use sessions.',       24.99, 100, 'computer-mouse.jpg',        1),
-(2, 'Headphones',               'Sony',          'Over-ear stereo headphones with rich sound, padded earcups, and foldable design.',                    49.99,  55, 'headphones.jpg',            0),
-(2, 'Gaming Headset',           'HyperX',        '7.1 surround sound gaming headset with noise-cancelling mic and memory foam earcups.',                69.99,  45, 'gaming-headset.jpg',        1),
-(2, 'Microphone',               'Blue',          'Studio-quality condenser microphone, ideal for streaming, podcasting, and video calls.',              89.99,  35, 'microphone.jpg',            1),
-(3, 'Webcam',                   'Logitech',      '1080p HD webcam with auto-focus, built-in mic, and wide-angle lens for video calls and streaming.',   59.99,  50, 'webcam.jpg',                0),
-(4, 'Ethernet Cable',           'Cable Matters', 'Cat6 Ethernet cable, snagless RJ45 connectors, supports up to 1Gbps speeds.',                         8.99,  200, 'ethernet-cable.jpg',        0),
-(1, 'USB Thumb Drive',          'Kingston',      'Compact USB 3.0 flash drive, fast read/write speeds, durable and pocket-sized.',                      9.99,  150, 'usb-thumb-drive.jpg',       0),
-(1, 'Micro SD Card + Adapter',  'Samsung',       'High-speed microSD card with full-size SD adapter, ideal for cameras, phones, and tablets.',         14.99, 120, 'micro-sd-card.jpg',         0),
-(4, 'USB-A Cable',              'Anker',         'Braided USB-A to USB-A cable, fast data transfer up to 480Mbps, tangle-resistant.',                   7.99,  180, 'usb-a-cable.jpg',           0),
-(4, 'USB-B Cable',              'Anker',         'USB-A to USB-B cable for printers, scanners, and audio interfaces, durable braided nylon.',           7.99,  140, 'usb-b-cable.jpg',           0),
-(4, 'USB-C Cable',              'Anker',         '100W USB-C to USB-C cable supporting fast charging and 10Gbps data transfer.',                       11.99, 200, 'usb-c-cable.jpg',           1),
-(6, 'USB-C Hub',                'Anker',         'Multi-port USB-C hub with HDMI, USB-A ports, and SD card reader, plug-and-play.',                    39.99,  65, 'usb-c-hub.jpg',             1),
-(5, 'USB-C Charging Brick',     'Anker',         'Compact GaN USB-C wall charger with fast charging support, ideal for laptops and phones.',           19.99,  90, 'usb-c-charging-brick.jpg',  0),
-(5, 'USB-A Charging Brick',     'Anker',         'Dual-port USB-A wall charger, compatible with all USB-A devices, foldable plug.',                    12.99, 100, 'usb-a-charging-brick.jpg',  0),
-(5, 'USB-C Power Bank',         'Anker',         '10000mAh portable power bank with USB-C in/out and USB-A port, slim and lightweight.',               29.99,  70, 'usb-c-power-bank.jpg',      1),
-(4, 'USB-C Extension Cable',    'Cable Matters', 'USB-C male to female extension cable, supports charging and data, flexible and durable.',             13.99,  85, 'usb-c-extension-cable.jpg', 0),
-(3, 'Controller',               'PowerA',        'Wired game controller compatible with PC and consoles, ergonomic grip and responsive buttons.',       34.99,  60, 'controller.jpg',            1),
-(6, 'Laptop Stand',             'UGREEN',        'Adjustable aluminum laptop stand for better ergonomics, cooling, and desk organization.',             27.99,  75, 'laptop-stand.jpg',          0);
+(1, 'External HDD',             'Seagate',       'Portable external hard drive, USB 3.0, compact and reliable for backups and file transfers.',        59.99,  80, 'HDD.jpg',                             1),
+(1, 'Raspberry Pi SSD',         'SanDisk',       'High-speed SSD designed for Raspberry Pi and single-board computers, fast boot times.',              29.99,  60, 'SSD.jpg',                             0),
+(3, 'Computer Mouse',           'Logitech',      'Ergonomic computer mouse, smooth tracking on all surfaces, comfortable for long use sessions.',       24.99, 100, 'Mouse.jpg',                           1),
+(2, 'Headphones',               'Sony',          'Over-ear stereo headphones with rich sound, padded earcups, and foldable design.',                    49.99,  55, 'Headphones.jpg',                      0),
+(2, 'Gaming Headset',           'HyperX',        '7.1 surround sound gaming headset with noise-cancelling mic and memory foam earcups.',                69.99,  45, 'Gaming_Headset.jpg',                  1),
+(2, 'Microphone',               'Blue',          'Studio-quality condenser microphone, ideal for streaming, podcasting, and video calls.',              89.99,  35, 'Microphone.jpg',                      1),
+(3, 'Webcam',                   'Logitech',      '1080p HD webcam with auto-focus, built-in mic, and wide-angle lens for video calls and streaming.',   59.99,  50, 'Camera.jpg',                          0),
+(4, 'Ethernet Cable',           'Cable Matters', 'Cat6 Ethernet cable, snagless RJ45 connectors, supports up to 1Gbps speeds.',                         8.99,  200, 'Ethernet_cable.jpg',                  0),
+(1, 'USB Thumb Drive',          'Kingston',      'Compact USB 3.0 flash drive, fast read/write speeds, durable and pocket-sized.',                      9.99,  150, 'USB-thumb-drive.jpg',                 0),
+(1, 'Micro SD Card + Adapter',  'Samsung',       'High-speed microSD card with full-size SD adapter, ideal for cameras, phones, and tablets.',         14.99, 120, 'MicroSD_card.jpg',                    0),
+(4, 'USB-A Cable',              'Anker',         'Braided USB-A to USB-A cable, fast data transfer up to 480Mbps, tangle-resistant.',                   7.99,  180, 'usb-a-cable.jpg',                     0),
+(4, 'USB-B Cable',              'Anker',         'USB-A to USB-B cable for printers, scanners, and audio interfaces, durable braided nylon.',           7.99,  140, 'USB_Mini-B_and_Standard-A_plugs.jpg', 0),
+(4, 'USB-C Cable',              'Anker',         '100W USB-C to USB-C cable supporting fast charging and 10Gbps data transfer.',                       11.99, 200, 'USB_Type-C_Cable.jpg',                1),
+(6, 'USB-C Hub',                'Anker',         'Multi-port USB-C hub with HDMI, USB-A ports, and SD card reader, plug-and-play.',                    39.99,  65, 'USB-C_Hub.jpg',                       1),
+(5, 'USB-C Charging Brick',     'Anker',         'Compact GaN USB-C wall charger with fast charging support, ideal for laptops and phones.',           19.99,  90, 'Blue_Charger.png',                    0),
+(5, 'USB-A Charging Brick',     'Anker',         'Dual-port USB-A wall charger, compatible with all USB-A devices, foldable plug.',                    12.99, 100, 'Chargers.webp',                       0),
+(5, 'USB-C Power Bank',         'Anker',         '10000mAh portable power bank with USB-C in/out and USB-A port, slim and lightweight.',               29.99,  70, 'usb-c-power-bank.jpg',                1),
+(4, 'USB-C Extension Cable',    'Cable Matters', 'USB-C male to female extension cable, supports charging and data, flexible and durable.',             13.99,  85, 'usb-c-extension-cable.jpg',           0),
+(3, 'Controller',               'PowerA',        'Wired game controller compatible with PC and consoles, ergonomic grip and responsive buttons.',       34.99,  60, 'Red_Controller.png',                  1),
+(6, 'Laptop Stand',             'UGREEN',        'Adjustable aluminum laptop stand for better ergonomics, cooling, and desk organization.',             27.99,  75, 'Chargers.webp',                       0);
 
 CREATE TABLE IF NOT EXISTS product_options (
     id           INT AUTO_INCREMENT PRIMARY KEY,
@@ -149,7 +149,7 @@ CREATE TABLE IF NOT EXISTS site_settings (
 
 INSERT INTO site_settings (setting_key, setting_value) VALUES
 ('active_theme',     'light'),
-('site_name',        'TechVault'),
+('site_name',        'The Computer Store'),
 ('maintenance_mode', '0');
 
 CREATE TABLE IF NOT EXISTS service_log (

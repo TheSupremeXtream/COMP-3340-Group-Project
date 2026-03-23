@@ -142,6 +142,83 @@ function get_theme_cart_image(): string
     };
 }
 
+function get_product_image_map(): array
+{
+    return [
+        'external-hdd.jpg' => 'HDD.jpg',
+        'raspberry-pi-ssd.jpg' => 'SSD.jpg',
+        'computer-mouse.jpg' => 'Mouse.jpg',
+        'headphones.jpg' => 'Headphones.jpg',
+        'gaming-headset.jpg' => 'Gaming_Headset.jpg',
+        'microphone.jpg' => 'Microphone.jpg',
+        'webcam.jpg' => 'Camera.jpg',
+        'ethernet-cable.jpg' => 'Ethernet_cable.jpg',
+        'usb-thumb-drive.jpg' => 'USB-thumb-drive.jpg',
+        'micro-sd-card.jpg' => 'MicroSD_card.jpg',
+        'usb-a-cable.jpg' => 'usb-a-cable.jpg',
+        'usb-b-cable.jpg' => 'USB_Mini-B_and_Standard-A_plugs.jpg',
+        'usb-c-cable.jpg' => 'USB_Type-C_Cable.jpg',
+        'usb-c-hub.jpg' => 'USB-C_Hub.jpg',
+        'usb-c-charging-brick.jpg' => 'Blue_Charger.png',
+        'usb-a-charging-brick.jpg' => 'Chargers.webp',
+        'usb-c-power-bank.jpg' => 'usb-c-power-bank.jpg',
+        'usb-c-extension-cable.jpg' => 'usb-c-extension-cable.jpg',
+        'controller.jpg' => 'Red_Controller.png',
+        'laptop-stand.jpg' => 'Chargers.webp',
+    ];
+}
+
+function product_image_filename(?string $image_file): string
+{
+    $fallback = 'Chargers.webp';
+    $file = trim((string) $image_file);
+
+    if ($file === '') {
+        return $fallback;
+    }
+
+    $map = get_product_image_map();
+
+    if (isset($map[$file])) {
+        $file = $map[$file];
+    }
+
+    if (is_file(__DIR__ . '/images/' . $file)) {
+        return $file;
+    }
+
+    $case_insensitive_files = [
+        'blue_charger.png' => 'Blue_Charger.png',
+        'camera.jpg' => 'Camera.jpg',
+        'chargers.webp' => 'Chargers.webp',
+        'ethernet_cable.jpg' => 'Ethernet_cable.jpg',
+        'gaming_headset.jpg' => 'Gaming_Headset.jpg',
+        'gaming_mouse.jpg' => 'Gaming_Mouse.jpg',
+        'hdd.jpg' => 'HDD.jpg',
+        'headphones.jpg' => 'Headphones.jpg',
+        'microphone.jpg' => 'Microphone.jpg',
+        'microsd_card.jpg' => 'MicroSD_card.jpg',
+        'mouse.jpg' => 'Mouse.jpg',
+        'red_controller.png' => 'Red_Controller.png',
+        'ssd.jpg' => 'SSD.jpg',
+        'usb_mini-b_and_standard-a_plugs.jpg' => 'USB_Mini-B_and_Standard-A_plugs.jpg',
+        'usb_type-c_cable.jpg' => 'USB_Type-C_Cable.jpg',
+        'usb-a-cable.jpg' => 'usb-a-cable.jpg',
+        'usb-c_hub.jpg' => 'USB-C_Hub.jpg',
+        'usb-c-extension-cable.jpg' => 'usb-c-extension-cable.jpg',
+        'usb-c-power-bank.jpg' => 'usb-c-power-bank.jpg',
+        'usb-thumb-drive.jpg' => 'USB-thumb-drive.jpg',
+    ];
+
+    $lower = strtolower($file);
+
+    if (isset($case_insensitive_files[$lower]) && is_file(__DIR__ . '/images/' . $case_insensitive_files[$lower])) {
+        return $case_insensitive_files[$lower];
+    }
+
+    return $fallback;
+}
+
 function h($str): string
 {
     return htmlspecialchars((string) $str, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
