@@ -9,14 +9,15 @@ $cart_image = get_theme_cart_image();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us — <?= h(SITE_NAME) ?></title>
-    <meta name="description" content="Contact The Computer Store for support or questions.">
-    <meta name="keywords" content="Contact Support, Help, Get In Touch">
+    <title>Help Wiki — <?= h(SITE_NAME) ?></title>
+    <meta name="description" content="Navigation page for the help wiki and support resources.">
+    <meta name="keywords" content="Help Wiki, FAQ, support, how to use website">
     <meta name="authors" content="Ronit Mahajan, Shameer Sheikh, Raphael Ceradoy, David Woo">
     <link rel="stylesheet" href="../styles/<?= h($theme) ?>.css">
-    <link rel="stylesheet" href="../styles/forms.css">
+    <link rel="stylesheet" href="../styles/wiki.css">
 </head>
 <body class="theme-<?= h($theme) ?>">
+
     <div class="container">
         <div class="navOuter">
             <div class="navInner">
@@ -58,35 +59,28 @@ $cart_image = get_theme_cart_image();
     </div>
 
     <div class="containerIntro">
-        <div class="introText simpleFormWrap">
-            <h1>Contact Us</h1>
-            <p class="intro simpleFormIntro">
-                Send us a message if you have questions about products, orders, or the website.
-            </p>
+        <div class="introText wikiIntroCenter">
+            <h1>Help Wiki</h1>
+            <p class="intro">Having trouble? Here are some resources to help you use the website.</p>
+        </div>
+    </div>
 
-            <form method="post" action="#" class="simpleForm">
-                <div class="simpleFormRow">
-                    <label class="simpleFormLabel" for="name">Name:</label>
-                    <input class="simpleFormInput" type="text" id="name" name="name" required>
-                </div>
+    <div class="featured">
+        <h1>Help Topics</h1>
 
-                <div class="simpleFormRow">
-                    <label class="simpleFormLabel" for="email">Email:</label>
-                    <input class="simpleFormInput" type="email" id="email" name="email" required>
-                </div>
+        <div class="wikiSection">
+            <ul class="wikiList">
+                <li><a href="browsingCatalog.php">Browsing the Catalog</a></li>
+                <li><a href="switchingThemes.php">Switching Themes<br>(Admin Only)</a></li>
+                <li><a href="editingProducts.php">Editing the Product Catalog<br>(Admin Only)</a></li>
+                <li><a href="userAdministration.php">Managing User Accounts<br>(Admin Only)</a></li>
+                <li><a href="contactSupport.php">Contacting Support</a></li>
+                <li><a href="creatingAccount.php">Creating an Account</a></li>
+            </ul>
+        </div>
 
-                <div class="simpleFormRow">
-                    <label class="simpleFormLabel" for="subject">Subject:</label>
-                    <input class="simpleFormInput" type="text" id="subject" name="subject" required>
-                </div>
-
-                <div class="simpleFormRow">
-                    <label class="simpleFormLabel" for="message">Message:</label>
-                    <textarea class="simpleFormTextarea" id="message" name="message" rows="5" required></textarea>
-                </div>
-
-                <button class="simpleFormButton" type="submit">Send Message</button>
-            </form>
+        <div class="backButtonContainer">
+            <a href="../index.php" class="backButton">&larr; Back to Home</a>
         </div>
     </div>
 

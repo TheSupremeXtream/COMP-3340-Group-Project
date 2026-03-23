@@ -1,10 +1,7 @@
 <?php
 require_once __DIR__ . '/../config.php';
 
-// if (empty($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
-//     header('Location: ../login.php?redirect=admin/product-form.php');
-//     exit;
-// }
+require_admin();
 
 $theme = get_active_theme();
 
@@ -298,7 +295,7 @@ $page_intro = $is_edit
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title><?= h($page_title) ?> — The Computer Store</title>
+    <title><?= h($page_title) ?> — <?= h(SITE_NAME) ?></title>
     <link rel="stylesheet" href="../../styles/<?= h($theme) ?>.css">
     <link rel="stylesheet" href="../../styles/admin-products.css">
 </head>
@@ -308,7 +305,7 @@ $page_intro = $is_edit
     <div class="navOuter">
         <div class="navInner">
             <a href="../../index.php" class="banner">
-                <img src="../../images/logo.png" alt="The Computer Store" height="60">The Computer Store
+                <img src="../../images/logo.png" alt="<?= h(SITE_NAME) ?>" height="60"><?= h(SITE_NAME) ?>
             </a>
             <ul class="navList">
                 <li><a href="../../index.php">Home</a></li>
@@ -316,6 +313,7 @@ $page_intro = $is_edit
                 <li><a href="theme-settings.php">Templates</a></li>
                 <li><a href="products.php">Products</a></li>
                 <li><a href="users.php">Users</a></li>
+                <li><a href="../../pages/logout.php">Logout</a></li>
             </ul>
         </div>
     </div>

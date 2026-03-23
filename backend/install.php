@@ -4,11 +4,13 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'store_db');
 
-function h(string $str): string {
-    return htmlspecialchars($str, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+function h($str): string
+{
+    return htmlspecialchars((string) $str, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
 
-function connect_server(): PDO {
+function connect_server(): PDO
+{
     return new PDO(
         'mysql:host=' . DB_HOST . ';charset=utf8mb4',
         DB_USER,
@@ -20,7 +22,8 @@ function connect_server(): PDO {
     );
 }
 
-function connect_database(): PDO {
+function connect_database(): PDO
+{
     return new PDO(
         'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4',
         DB_USER,
@@ -32,7 +35,8 @@ function connect_database(): PDO {
     );
 }
 
-function table_exists(PDO $pdo, string $table): bool {
+function table_exists(PDO $pdo, string $table): bool
+{
     $stmt = $pdo->prepare("
         SELECT COUNT(*)
         FROM information_schema.tables
@@ -43,15 +47,28 @@ function table_exists(PDO $pdo, string $table): bool {
         ':db_name' => DB_NAME,
         ':table_name' => $table,
     ]);
+
     return (int) $stmt->fetchColumn() > 0;
 }
 
-function ensure_theme_setting(PDO $pdo): void {
-    $stmt = $pdo->prepare("SELECT COUNT(*) FROM site_settings WHERE setting_key = :setting_key");
+function ensure_theme_setting(PDO $pdo): void
+{
+    $stmt = $pdo->prepare("
+        SELECT COUNT(*)
+        FROM site_settings
+        WHERE setting_key = :setting_key
+    ");
     $stmt->execute([':setting_key' => 'active_theme']);
     $exists = (int) $stmt->fetchColumn() > 0;
 
     if ($exists) {
+        $update = $pdo->prepare("
+            UPDATE site_settings
+            SET setting_value = 'light'
+            WHERE setting_key = 'active_theme'
+              AND setting_value NOT IN ('light', 'dark', 'holiday')
+        ");
+        $update->execute();
         return;
     }
 
@@ -65,7 +82,8 @@ function ensure_theme_setting(PDO $pdo): void {
     ]);
 }
 
-function import_sql_file(PDO $pdo, string $file_path): void {
+function import_sql_file(PDO $pdo, string $file_path): void
+{
     if (!file_exists($file_path)) {
         throw new RuntimeException('database.sql file was not found.');
     }
@@ -139,69 +157,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Install Setup</title>
     <link rel="stylesheet" href="../styles/light.css">
-    <style>
-        .installWrap {
-            width: 82%;
-            max-width: 900px;
-            margin: 30px auto;
-            background: #fff;
-            border: 1px solid #c7c7c7;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            padding: 32px;
-        }
-
-        .installWrap h1 {
-            font-size: 2rem;
-            color: #7b0f19;
-            margin-bottom: 16px;
-            border-bottom: 2px solid #ececec;
-            padding-bottom: 8px;
-        }
-
-        .installMsg,
-        .installErr {
-            margin-top: 18px;
-            padding: 14px 16px;
-            border-radius: 6px;
-            font-weight: 600;
-        }
-
-        .installMsg {
-            background: #d1fae5;
-            color: #065f46;
-            border: 1px solid #6ee7b7;
-        }
-
-        .installErr {
-            background: #fee2e2;
-            color: #991b1b;
-            border: 1px solid #fca5a5;
-        }
-
-        .installActions {
-            margin-top: 22px;
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .installBtn {
-            display: inline-block;
-            background: #7b0f19;
-            color: #fff;
-            padding: 12px 16px;
-            border-radius: 6px;
-        }
-
-        .installBtn:hover {
-            background: #5d0c13;
-        }
-
-        .installNote {
-            margin-top: 18px;
-            color: #555;
-        }
-    </style>
+    <link rel="stylesheet" href="../styles/install.css">
 </head>
 <body>
     <div class="installWrap">

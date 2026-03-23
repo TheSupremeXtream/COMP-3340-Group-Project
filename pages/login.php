@@ -1,101 +1,142 @@
 <?php
 require_once __DIR__ . '/../backend/config.php';
 
-$theme = get_active_theme();
+if (is_logged_in()) {
+    redirect_to(is_admin() ? BASE_URL . 'backend/admin/products.php' : BASE_URL . 'index.php');
+}
 
-$cart_image = match ($theme) {
-    'dark' => 'Dark_Mode_Cart.png',
-    'holiday' => 'Holiday_Mode_Cart.png',
-    default => 'Light_Mode_Cart.png',
-};
+$theme = get_active_theme();
+$cart_image = get_theme_cart_image();
+
+$username = '';
+$error = '';
+$success = '';
+
+if (isset($_GET['registered']) && $_GET['registered'] === '1') {
+    $success = 'Account created successfully. You can now log in.';
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = trim($_POST['username'] ?? '');
+    $password = $_POST['password'] ?? '';
+
+    if ($username === '' || $password === '') {
+        $error = 'Please enter both username and password.';
+    } else {
+        try {
+            $pdo = get_db();
+
+            $stmt = $pdo->prepare("
+                SELECT id, username, full_name, email, password, role, is_active
+                FROM users
+                WHERE username = :username OR email = :email
+                LIMIT 1
+            ");
+            $stmt->execute([
+                ':username' => $username,
+                ':email' => $username,
+            ]);
+
+            $user = $stmt->fetch();
+
+            if (!$user || !password_verify($password, $user['password'])) {
+                $error = 'Invalid username/email or password.';
+            } elseif ((int) $user['is_active'] !== 1) {
+                $error = 'This account has been disabled. Please contact an administrator.';
+            } else {
+                login_user($user);
+
+                $default_target = is_admin()
+                    ? BASE_URL . 'backend/admin/products.php'
+                    : BASE_URL . 'index.php';
+
+                redirect_to(get_redirect_target($default_target));
+            }
+        } catch (PDOException $e) {
+            $error = 'Unable to log in right now: ' . $e->getMessage();
+        }
+    }
+}
+
+$redirect_value = trim((string) ($_GET['redirect'] ?? $_POST['redirect'] ?? ''));
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Computer Store</title>
-    <meta name="description" content="Page for logging into user account">
+    <title>Login — <?= h(SITE_NAME) ?></title>
+    <meta name="description" content="Login page for user accounts on The Computer Store.">
     <meta name="keywords" content="Accounts, Login">
     <meta name="authors" content="Ronit Mahajan, Shameer Sheikh, Raphael Ceradoy, David Woo">
     <link rel="stylesheet" href="../styles/<?= h($theme) ?>.css">
-    <style>
-        button {
-            margin-top: 15px;
-            padding: 10px;
-            background-color: black;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        input {
-            float: right;
-        }
-
-        button:hover {
-            background: #4f0910;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
-    </style>
-
+    <link rel="stylesheet" href="../styles/forms.css">
 </head>
-<body>
+<body class="theme-<?= h($theme) ?>">
     <div class="container">
         <div class="navOuter">
             <div class="navInner">
                 <a href="../index.php" class="banner">
-                    <img src="../images/logo.png" alt="The Computer Store" height="60">The Computer Store
+                    <img src="../images/logo.png" alt="<?= h(SITE_NAME) ?>" height="60"><?= h(SITE_NAME) ?>
                 </a>
+
                 <ul class="navList">
                     <li><a href="../backend/products.php">Products</a></li>
                     <li><a href="About.php">About</a></li>
                     <li><a href="contactUs.php">Contact Us</a></li>
-                    <li><a href="Wiki.html">Wiki</a></li>
+                    <li><a href="Wiki.php">Wiki</a></li>
                 </ul>
+
                 <ul class="login">
                     <li class="divider"></li>
                     <li><a href="login.php">Login</a></li>
                     <li><a href="register.php">Register</a></li>
                 </ul>
+
                 <ul class="cart">
                     <li class="divider"></li>
-                    <li><a href="cart.html">
-                        <img src="../images/Dark_Mode_Cart.png" alt="Cart" height="60">
-                    </a></li>
-                </ul>
-                <ul class="toggle">
-                    <li class="divider"></li>
-                    <li><a href="../backend/admin/theme-settings.php" title="Theme Manager">
-                        <img src="../images/Sun.png" alt="Theme Manager" height="60">
-                    </a></li>
-                    <li><a href="../backend/admin/theme-settings.php" title="Theme Manager">
-                        <img src="../images/Moon.png" alt="Theme Manager" height="60">
-                    </a></li>
-                    <li><a href="../backend/admin/theme-settings.php" title="Theme Manager">
-                        <img src="../images/Egg.png" alt="Theme Manager" height="60">
-                    </a></li>
+                    <li>
+                        <a href="../cart.html">
+                            <img src="../images/<?= h($cart_image) ?>" alt="Cart" height="60">
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- Currently is not linked to user database -->
     <div class="containerIntro">
-        <div class="introText" style="text-align: center;">
-            <h2>Login</h2>
-            <form style="display: inline-block; text-align: left;">
-                <label class="intro" for="username">Username:</label>
-                <input type="text" id="username" required>
-                </br></br>
-                <label class="intro" for="password">Password:</label>
-                <input type="password" id="password" required>
-                </br></br>
-                <button class="intro" type="submit" style="color: #fff; display: block; margin: 0 auto;">Login</button>
+        <div class="introText simpleFormWrap">
+            <h1>Login</h1>
+            <p class="intro simpleFormIntro">Enter your account details to sign in.</p>
+
+            <?php if ($error !== ''): ?>
+                <div class="simpleFormAlert error"><?= h($error) ?></div>
+            <?php endif; ?>
+
+            <?php if ($success !== ''): ?>
+                <div class="simpleFormAlert success"><?= h($success) ?></div>
+            <?php endif; ?>
+
+            <form method="post" action="login.php" class="simpleForm">
+                <input type="hidden" name="redirect" value="<?= h($redirect_value) ?>">
+
+                <div class="simpleFormRow">
+                    <label class="simpleFormLabel" for="username">Username or Email:</label>
+                    <input class="simpleFormInput" type="text" id="username" name="username" value="<?= h($username) ?>" required>
+                </div>
+
+                <div class="simpleFormRow">
+                    <label class="simpleFormLabel" for="password">Password:</label>
+                    <input class="simpleFormInput" type="password" id="password" name="password" required>
+                </div>
+
+                <button class="simpleFormButton" type="submit">Login</button>
             </form>
+
+            <p class="simpleFormHelp">
+                Need an account? <a href="register.php">Create one here</a>.
+            </p>
         </div>
     </div>
 

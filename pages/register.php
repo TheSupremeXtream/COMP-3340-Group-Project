@@ -1,106 +1,158 @@
 <?php
 require_once __DIR__ . '/../backend/config.php';
 
-$theme = get_active_theme();
+if (is_logged_in()) {
+    redirect_to(is_admin() ? BASE_URL . 'backend/admin/products.php' : BASE_URL . 'index.php');
+}
 
-$cart_image = match ($theme) {
-    'dark' => 'Dark_Mode_Cart.png',
-    'holiday' => 'Holiday_Mode_Cart.png',
-    default => 'Light_Mode_Cart.png',
-};
+$theme = get_active_theme();
+$cart_image = get_theme_cart_image();
+
+$full_name = '';
+$username = '';
+$email = '';
+$error = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $full_name = trim($_POST['fullname'] ?? '');
+    $username = trim($_POST['username'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $password = $_POST['password'] ?? '';
+    $confirm_password = $_POST['confirm_password'] ?? '';
+
+    if ($full_name === '' || $username === '' || $email === '' || $password === '' || $confirm_password === '') {
+        $error = 'Please fill in all fields.';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = 'Please enter a valid email address.';
+    } elseif (strlen($username) < 3) {
+        $error = 'Username must be at least 3 characters long.';
+    } elseif (strlen($password) < 8) {
+        $error = 'Password must be at least 8 characters long.';
+    } elseif ($password !== $confirm_password) {
+        $error = 'Passwords do not match.';
+    } else {
+        try {
+            $pdo = get_db();
+
+            $check = $pdo->prepare("
+                SELECT id
+                FROM users
+                WHERE username = :username OR email = :email
+                LIMIT 1
+            ");
+            $check->execute([
+                ':username' => $username,
+                ':email' => $email,
+            ]);
+
+            if ($check->fetch()) {
+                $error = 'That username or email is already in use.';
+            } else {
+                $stmt = $pdo->prepare("
+                    INSERT INTO users (username, email, password, full_name, role, is_active)
+                    VALUES (:username, :email, :password, :full_name, 'customer', 1)
+                ");
+                $stmt->execute([
+                    ':username' => $username,
+                    ':email' => $email,
+                    ':password' => password_hash($password, PASSWORD_DEFAULT),
+                    ':full_name' => $full_name,
+                ]);
+
+                redirect_to(BASE_URL . 'pages/login.php?registered=1');
+            }
+        } catch (PDOException $e) {
+            $error = 'Unable to create account right now: ' . $e->getMessage();
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Computer Store</title>
-    <meta name="description" content="Page for registering/creating a user account">
+    <title>Register — <?= h(SITE_NAME) ?></title>
+    <meta name="description" content="Create a new user account on The Computer Store.">
     <meta name="keywords" content="Create Account, Register Account, Accounts">
     <meta name="authors" content="Ronit Mahajan, Shameer Sheikh, Raphael Ceradoy, David Woo">
     <link rel="stylesheet" href="../styles/<?= h($theme) ?>.css">
-    <style>
-        button {
-            margin-top: 15px;
-            padding: 10px;
-            background-color: black;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        input {
-            float: right;
-        }
-
-        button:hover {
-            background: #4f0910;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
-    </style>
-
+    <link rel="stylesheet" href="../styles/forms.css">
 </head>
-<body>
+<body class="theme-<?= h($theme) ?>">
     <div class="container">
         <div class="navOuter">
             <div class="navInner">
                 <a href="../index.php" class="banner">
-                    <img src="../images/logo.png" alt="The Computer Store" height="60">The Computer Store
+                    <img src="../images/logo.png" alt="<?= h(SITE_NAME) ?>" height="60"><?= h(SITE_NAME) ?>
                 </a>
+
                 <ul class="navList">
                     <li><a href="../backend/products.php">Products</a></li>
                     <li><a href="About.php">About</a></li>
                     <li><a href="contactUs.php">Contact Us</a></li>
-                    <li><a href="Wiki.html">Wiki</a></li>
+                    <li><a href="Wiki.php">Wiki</a></li>
                 </ul>
+
                 <ul class="login">
                     <li class="divider"></li>
                     <li><a href="login.php">Login</a></li>
                     <li><a href="register.php">Register</a></li>
                 </ul>
+
                 <ul class="cart">
                     <li class="divider"></li>
-                    <li><a href="cart.html">
-                        <img src="../images/Dark_Mode_Cart.png" alt="Cart" height="60">
-                    </a></li>
-                </ul>
-                <ul class="toggle">
-                    <li class="divider"></li>
-                    <li><a href="../backend/admin/theme-settings.php" title="Theme Manager">
-                        <img src="../images/Sun.png" alt="Theme Manager" height="60">
-                    </a></li>
-                    <li><a href="../backend/admin/theme-settings.php" title="Theme Manager">
-                        <img src="../images/Moon.png" alt="Theme Manager" height="60">
-                    </a></li>
-                    <li><a href="../backend/admin/theme-settings.php" title="Theme Manager">
-                        <img src="../images/Egg.png" alt="Theme Manager" height="60">
-                    </a></li>
+                    <li>
+                        <a href="../cart.html">
+                            <img src="../images/<?= h($cart_image) ?>" alt="Cart" height="60">
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
 
     <div class="containerIntro">
-        <div class="introText" style="text-align: center;">
-            <h2>Register Account</h2>
-            <form style="display: inline-block; text-align: left;">
-                <label class="intro" for="fullname">Full Name:</label>
-                <input type="text" id="fullname" required>
-                </br></br>
-                <label class="intro" for="username">Userame:</label>
-                <input type="text" id="username" required>
-                </br></br>
-                <label class="intro" for="email">Email:</label>
-                <input type="email" id="email" required>
-                </br></br>
-                <label class="intro" for="password">Password:</label>
-                <input type="password" id="password" required>
-                </br></br>
-                <button class="intro" type="submit" style="color: #fff; display: block; margin: 0 auto;">Create Account</button>
+        <div class="introText simpleFormWrap">
+            <h1>Register Account</h1>
+            <p class="intro simpleFormIntro">Create your account to use more features of the store.</p>
+
+            <?php if ($error !== ''): ?>
+                <div class="simpleFormAlert error"><?= h($error) ?></div>
+            <?php endif; ?>
+
+            <form method="post" action="register.php" class="simpleForm">
+                <div class="simpleFormRow">
+                    <label class="simpleFormLabel" for="fullname">Full Name:</label>
+                    <input class="simpleFormInput" type="text" id="fullname" name="fullname" value="<?= h($full_name) ?>" required>
+                </div>
+
+                <div class="simpleFormRow">
+                    <label class="simpleFormLabel" for="username">Username:</label>
+                    <input class="simpleFormInput" type="text" id="username" name="username" value="<?= h($username) ?>" required>
+                </div>
+
+                <div class="simpleFormRow">
+                    <label class="simpleFormLabel" for="email">Email:</label>
+                    <input class="simpleFormInput" type="email" id="email" name="email" value="<?= h($email) ?>" required>
+                </div>
+
+                <div class="simpleFormRow">
+                    <label class="simpleFormLabel" for="password">Password:</label>
+                    <input class="simpleFormInput" type="password" id="password" name="password" required>
+                </div>
+
+                <div class="simpleFormRow">
+                    <label class="simpleFormLabel" for="confirm_password">Confirm Password:</label>
+                    <input class="simpleFormInput" type="password" id="confirm_password" name="confirm_password" required>
+                </div>
+
+                <button class="simpleFormButton" type="submit">Create Account</button>
             </form>
+
+            <p class="simpleFormHelp">
+                Already have an account? <a href="login.php">Log in here</a>.
+            </p>
         </div>
     </div>
 

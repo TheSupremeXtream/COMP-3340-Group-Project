@@ -24,6 +24,14 @@
     margin: 0;
 }
 
+.refresh-timer {
+    text-align: center;
+    color: #888;
+    font-size: .85rem;
+    margin: 1rem 0 0;
+    width: 100%;
+}
+
 .overall-status {
     display: flex;
     align-items: center;
@@ -184,10 +192,25 @@
     gap: .5rem;
 }
 
-.admin-header .brand { color: #fff; font-weight: 700; text-decoration: none; font-size: 1.05rem; }
+.admin-header .brand {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.05rem;
+}
 
-.admin-nav a { color: #cbd5e1; text-decoration: none; margin-left: 1.25rem; font-size: .9rem; }
-.admin-nav a:hover, .admin-nav a.active { color: #fff; border-bottom: 2px solid #60a5fa; }
+.admin-nav a {
+    color: #cbd5e1;
+    text-decoration: none;
+    margin-left: 1.25rem;
+    font-size: .9rem;
+}
+
+.admin-nav a:hover,
+.admin-nav a.active {
+    color: #fff;
+    border-bottom: 2px solid #60a5fa;
+}
 
 .admin-footer {
     text-align: center;

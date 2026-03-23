@@ -1,10 +1,7 @@
 <?php
 require_once __DIR__ . '/../config.php';
 
-// if (empty($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
-//     header('Location: ../login.php?redirect=admin/theme-settings.php');
-//     exit;
-// }
+require_admin();
 
 $themes = [
     'light' => [
@@ -51,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $current_theme = get_active_theme();
+$current_theme_label = $themes[$current_theme]['label'] ?? 'Light Theme';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,7 +56,7 @@ $current_theme = get_active_theme();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>Template Manager — The Computer Store</title>
+    <title>Template Manager — <?= h(SITE_NAME) ?></title>
     <link rel="stylesheet" href="../../styles/<?= h($current_theme) ?>.css">
     <link rel="stylesheet" href="../../styles/admin-theme.css">
 </head>
@@ -68,7 +66,7 @@ $current_theme = get_active_theme();
     <div class="navOuter">
         <div class="navInner">
             <a href="../../index.php" class="banner">
-                <img src="../../images/logo.png" alt="The Computer Store" height="60">The Computer Store
+                <img src="../../images/logo.png" alt="<?= h(SITE_NAME) ?>" height="60"><?= h(SITE_NAME) ?>
             </a>
             <ul class="navList">
                 <li><a href="../../index.php">Home</a></li>
@@ -76,6 +74,7 @@ $current_theme = get_active_theme();
                 <li><a href="theme-settings.php">Templates</a></li>
                 <li><a href="products.php">Products</a></li>
                 <li><a href="users.php">Users</a></li>
+                <li><a href="../../pages/logout.php">Logout</a></li>
             </ul>
         </div>
     </div>
@@ -93,8 +92,8 @@ $current_theme = get_active_theme();
             <div class="alertBar <?= h($message_class) ?>"><?= h($message) ?></div>
         <?php endif; ?>
 
-        <p class="currentTheme">Current template: <?= h($themes[$current_theme]['label']) ?></p>
-        <p class="templateNote">Your existing <code>active_theme</code> database setting is now being used for the site theme.</p>
+        <p class="currentTheme">Current template: <?= h($current_theme_label) ?></p>
+        <p class="templateNote">Your existing <code>active_theme</code> database setting is being used for the site theme.</p>
     </div>
 
     <div class="featured">

@@ -9,12 +9,12 @@ $cart_image = get_theme_cart_image();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us — <?= h(SITE_NAME) ?></title>
-    <meta name="description" content="Contact The Computer Store for support or questions.">
-    <meta name="keywords" content="Contact Support, Help, Get In Touch">
+    <title>Browsing the Catalog — <?= h(SITE_NAME) ?></title>
+    <meta name="description" content="Learn how to browse the store catalogue and view product details.">
+    <meta name="keywords" content="Browsing the Catalog, Viewing Product Details, Product Search">
     <meta name="authors" content="Ronit Mahajan, Shameer Sheikh, Raphael Ceradoy, David Woo">
     <link rel="stylesheet" href="../styles/<?= h($theme) ?>.css">
-    <link rel="stylesheet" href="../styles/forms.css">
+    <link rel="stylesheet" href="../styles/wiki.css">
 </head>
 <body class="theme-<?= h($theme) ?>">
     <div class="container">
@@ -58,35 +58,38 @@ $cart_image = get_theme_cart_image();
     </div>
 
     <div class="containerIntro">
-        <div class="introText simpleFormWrap">
-            <h1>Contact Us</h1>
-            <p class="intro simpleFormIntro">
-                Send us a message if you have questions about products, orders, or the website.
+        <div class="introText">
+            <h1>How to Browse the Catalog</h1>
+            <p class="intro">
+                This page explains how users can search the catalogue, filter products, and open product details.
             </p>
+        </div>
+    </div>
 
-            <form method="post" action="#" class="simpleForm">
-                <div class="simpleFormRow">
-                    <label class="simpleFormLabel" for="name">Name:</label>
-                    <input class="simpleFormInput" type="text" id="name" name="name" required>
-                </div>
+    <div class="featured">
+        <h1>Steps</h1>
 
-                <div class="simpleFormRow">
-                    <label class="simpleFormLabel" for="email">Email:</label>
-                    <input class="simpleFormInput" type="email" id="email" name="email" required>
-                </div>
+        <div class="wikiSection wikiContentWrap">
+            <ol class="wikiSteps">
+                <li>From the home page, click <strong>Products</strong> in the navigation bar or choose one of the featured products.</li>
+                <li>On the Products page, use the <strong>search box</strong> to search by product name or brand.</li>
+                <li>Use the <strong>category filter</strong> to narrow the results to a specific type of product.</li>
+                <li>Use the <strong>sort menu</strong> to sort products by name or price.</li>
+                <li>Click <strong>View Details</strong> on any product card to open the full product page.</li>
+                <li>On the product detail page, users can review the description, select available options, adjust quantity, and view the total price.</li>
+            </ol>
 
-                <div class="simpleFormRow">
-                    <label class="simpleFormLabel" for="subject">Subject:</label>
-                    <input class="simpleFormInput" type="text" id="subject" name="subject" required>
-                </div>
+            <div class="wikiImageWrap">
+                <img class="wikiImage" src="../images/productsPage.png" alt="Screenshot of the products page" width="639" height="303">
+            </div>
+        </div>
 
-                <div class="simpleFormRow">
-                    <label class="simpleFormLabel" for="message">Message:</label>
-                    <textarea class="simpleFormTextarea" id="message" name="message" rows="5" required></textarea>
-                </div>
+        <div class="backButtonContainer">
+            <a href="Wiki.php" class="backButton">&larr; Back to Wiki</a>
+        </div>
 
-                <button class="simpleFormButton" type="submit">Send Message</button>
-            </form>
+        <div class="backButtonContainer">
+            <a href="../index.php" class="backButton">&larr; Back to Home</a>
         </div>
     </div>
 

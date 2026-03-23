@@ -9,12 +9,12 @@ $cart_image = get_theme_cart_image();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us — <?= h(SITE_NAME) ?></title>
-    <meta name="description" content="Contact The Computer Store for support or questions.">
-    <meta name="keywords" content="Contact Support, Help, Get In Touch">
+    <title>User Administration — <?= h(SITE_NAME) ?></title>
+    <meta name="description" content="Learn how an administrator can enable and disable user accounts.">
+    <meta name="keywords" content="User Administration, Admin Users, Enable Users, Disable Users">
     <meta name="authors" content="Ronit Mahajan, Shameer Sheikh, Raphael Ceradoy, David Woo">
     <link rel="stylesheet" href="../styles/<?= h($theme) ?>.css">
-    <link rel="stylesheet" href="../styles/forms.css">
+    <link rel="stylesheet" href="../styles/wiki.css">
 </head>
 <body class="theme-<?= h($theme) ?>">
     <div class="container">
@@ -58,35 +58,36 @@ $cart_image = get_theme_cart_image();
     </div>
 
     <div class="containerIntro">
-        <div class="introText simpleFormWrap">
-            <h1>Contact Us</h1>
-            <p class="intro simpleFormIntro">
-                Send us a message if you have questions about products, orders, or the website.
+        <div class="introText">
+            <h1>How to Manage User Accounts</h1>
+            <p class="intro">
+                This page explains how an administrator can review users and enable or disable customer accounts.
             </p>
+        </div>
+    </div>
 
-            <form method="post" action="#" class="simpleForm">
-                <div class="simpleFormRow">
-                    <label class="simpleFormLabel" for="name">Name:</label>
-                    <input class="simpleFormInput" type="text" id="name" name="name" required>
-                </div>
+    <div class="featured">
+        <h1>Steps</h1>
 
-                <div class="simpleFormRow">
-                    <label class="simpleFormLabel" for="email">Email:</label>
-                    <input class="simpleFormInput" type="email" id="email" name="email" required>
-                </div>
+        <div class="wikiSection wikiContentWrap">
+            <ul class="wikiSteps">
+                <li>Log in using an <strong>admin account</strong>.</li>
+                <li>Open the admin area and go to the <strong>Users</strong> page.</li>
+                <li>Use the search box to find a user by <strong>username</strong>, <strong>email</strong>, <strong>full name</strong>, or <strong>role</strong>.</li>
+                <li>Review the summary boxes at the top of the page to see totals for users, active users, inactive users, and admin accounts.</li>
+                <li>To disable a customer account, click the <strong>Disable</strong> button beside that user.</li>
+                <li>To re-enable a disabled customer account, click the <strong>Enable</strong> button beside that user.</li>
+                <li>Admin accounts are protected and cannot be disabled from this page.</li>
+                <li>After changing a user status, the page shows a confirmation message so the administrator knows the action worked.</li>
+            </ul>
+        </div>
 
-                <div class="simpleFormRow">
-                    <label class="simpleFormLabel" for="subject">Subject:</label>
-                    <input class="simpleFormInput" type="text" id="subject" name="subject" required>
-                </div>
+        <div class="backButtonContainer">
+            <a href="Wiki.php" class="backButton">&larr; Back to Wiki</a>
+        </div>
 
-                <div class="simpleFormRow">
-                    <label class="simpleFormLabel" for="message">Message:</label>
-                    <textarea class="simpleFormTextarea" id="message" name="message" rows="5" required></textarea>
-                </div>
-
-                <button class="simpleFormButton" type="submit">Send Message</button>
-            </form>
+        <div class="backButtonContainer">
+            <a href="../index.php" class="backButton">&larr; Back to Home</a>
         </div>
     </div>
 

@@ -1,0 +1,180 @@
+.wikiContentWrap {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.wikiSteps {
+    margin: 0 auto;
+    padding-left: 24px;
+    text-align: left;
+    line-height: 1.8;
+}
+
+.wikiSteps li {
+    margin-bottom: 10px;
+}
+
+.wikiImageWrap {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.wikiImage {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.wikiTextBlock {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+    line-height: 1.8;
+}
+
+.wikiTextBlock p,
+.wikiTextBlock li {
+    font-size: 1rem;
+}
+
+.wikiIntroCenter {
+    text-align: center;
+}
+
+.wikiSection {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Wiki topic button list */
+
+.wikiList {
+    list-style: none;
+    margin-top: 20px;
+    display: grid;
+    gap: 12px;
+    justify-content: center;
+    padding-left: 0;
+}
+
+.wikiList li {
+    width: 100%;
+    max-width: 400px;
+}
+
+.wikiList li a {
+    display: block;
+    text-align: center;
+    border-radius: 6px;
+    padding: 14px 16px;
+    font-weight: bold;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+
+/* Back buttons */
+
+.backButtonContainer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.backButton {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+}
+
+/* Light theme */
+
+body.theme-light .wikiList li a {
+    background: #fafafa;
+    border: 1px solid #d9d9d9;
+    color: #222;
+}
+
+body.theme-light .wikiList li a:hover {
+    transform: translateY(-3px);
+    border-color: #c22333;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+    background: #ffffff;
+}
+
+body.theme-light .backButton {
+    background: #c22333;
+    color: #fff;
+}
+
+body.theme-light .backButton:hover {
+    background: #4f0910;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark theme */
+
+body.theme-dark .wikiImage {
+    background: #1f2937;
+    border-color: #334155;
+}
+
+body.theme-dark .wikiList li a {
+    background: #1f2937;
+    border: 1px solid #334155;
+    color: #e5e7eb;
+}
+
+body.theme-dark .wikiList li a:hover {
+    transform: translateY(-3px);
+    border-color: #60a5fa;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+    background: #0f172a;
+    color: #ffffff;
+}
+
+body.theme-dark .backButton {
+    background: #1d4ed8;
+    color: #fff;
+}
+
+body.theme-dark .backButton:hover {
+    background: #1e40af;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* Holiday theme */
+
+body.theme-holiday .wikiImage {
+    background: #fffaf3;
+    border-color: #dbc9ad;
+}
+
+body.theme-holiday .wikiList li a {
+    background: #fffdf9;
+    border: 1px solid #d8c4a1;
+    color: #2f241b;
+}
+
+body.theme-holiday .wikiList li a:hover {
+    transform: translateY(-3px);
+    border-color: #0f5132;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+    background: #fffaf3;
+    color: #0f5132;
+}
+
+body.theme-holiday .backButton {
+    background: #0f5132;
+    color: #fff;
+}
+
+body.theme-holiday .backButton:hover {
+    background: #0b3f27;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}

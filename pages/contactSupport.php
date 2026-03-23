@@ -9,12 +9,12 @@ $cart_image = get_theme_cart_image();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us — <?= h(SITE_NAME) ?></title>
-    <meta name="description" content="Contact The Computer Store for support or questions.">
-    <meta name="keywords" content="Contact Support, Help, Get In Touch">
+    <title>Contacting Support — <?= h(SITE_NAME) ?></title>
+    <meta name="description" content="Learn how to contact support through the store website.">
+    <meta name="keywords" content="Customer Support, Contact Form, Help">
     <meta name="authors" content="Ronit Mahajan, Shameer Sheikh, Raphael Ceradoy, David Woo">
     <link rel="stylesheet" href="../styles/<?= h($theme) ?>.css">
-    <link rel="stylesheet" href="../styles/forms.css">
+    <link rel="stylesheet" href="../styles/wiki.css">
 </head>
 <body class="theme-<?= h($theme) ?>">
     <div class="container">
@@ -58,35 +58,37 @@ $cart_image = get_theme_cart_image();
     </div>
 
     <div class="containerIntro">
-        <div class="introText simpleFormWrap">
-            <h1>Contact Us</h1>
-            <p class="intro simpleFormIntro">
-                Send us a message if you have questions about products, orders, or the website.
+        <div class="introText">
+            <h1>How to Contact Support</h1>
+            <p class="intro">
+                This page explains how users can send questions or support requests through the Contact Us page.
             </p>
+        </div>
+    </div>
 
-            <form method="post" action="#" class="simpleForm">
-                <div class="simpleFormRow">
-                    <label class="simpleFormLabel" for="name">Name:</label>
-                    <input class="simpleFormInput" type="text" id="name" name="name" required>
-                </div>
+    <div class="featured">
+        <h1>Steps</h1>
 
-                <div class="simpleFormRow">
-                    <label class="simpleFormLabel" for="email">Email:</label>
-                    <input class="simpleFormInput" type="email" id="email" name="email" required>
-                </div>
+        <div class="wikiSection wikiContentWrap">
+            <ul class="wikiSteps">
+                <li>If the wiki pages have not answered your question, go to the <strong>Contact Us</strong> page from the site navigation.</li>
+                <li>Enter the required information: <strong>Name</strong>, <strong>Email</strong>, <strong>Subject</strong>, and <strong>Message</strong>.</li>
+                <li>Review your information to make sure everything is correct.</li>
+                <li>Click the <strong>Send Message</strong> button to submit your request.</li>
+                <li>Support requests can be used for questions about products, website issues, or general help.</li>
+            </ul>
 
-                <div class="simpleFormRow">
-                    <label class="simpleFormLabel" for="subject">Subject:</label>
-                    <input class="simpleFormInput" type="text" id="subject" name="subject" required>
-                </div>
+            <div class="wikiImageWrap">
+                <img class="wikiImage" src="../images/contactUsPage.png" alt="Screenshot of the contact us page" width="501" height="245">
+            </div>
+        </div>
 
-                <div class="simpleFormRow">
-                    <label class="simpleFormLabel" for="message">Message:</label>
-                    <textarea class="simpleFormTextarea" id="message" name="message" rows="5" required></textarea>
-                </div>
+        <div class="backButtonContainer">
+            <a href="Wiki.php" class="backButton">&larr; Back to Wiki</a>
+        </div>
 
-                <button class="simpleFormButton" type="submit">Send Message</button>
-            </form>
+        <div class="backButtonContainer">
+            <a href="../index.php" class="backButton">&larr; Back to Home</a>
         </div>
     </div>
 

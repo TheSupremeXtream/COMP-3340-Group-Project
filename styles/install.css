@@ -1,0 +1,63 @@
+.installWrap {
+    width: 82%;
+    max-width: 900px;
+    margin: 30px auto;
+    background: #fff;
+    border: 1px solid #c7c7c7;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 32px;
+}
+
+.installWrap h1 {
+    font-size: 2rem;
+    color: #7b0f19;
+    margin-bottom: 16px;
+    border-bottom: 2px solid #ececec;
+    padding-bottom: 8px;
+}
+
+.installMsg,
+.installErr {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.installMsg {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #6ee7b7;
+}
+
+.installErr {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+.installActions {
+    margin-top: 22px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.installBtn {
+    display: inline-block;
+    background: #7b0f19;
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.18s ease;
+}
+
+.installBtn:hover {
+    background: #5d0c13;
+}
+
+.installNote {
+    margin-top: 18px;
+    color: #555;
+}

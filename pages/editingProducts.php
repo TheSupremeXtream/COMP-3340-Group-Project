@@ -9,11 +9,12 @@ $cart_image = get_theme_cart_image();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About — <?= h(SITE_NAME) ?></title>
-    <meta name="description" content="Learn more about The Computer Store and what we offer.">
-    <meta name="keywords" content="About Us, About, PC Store, Gaming Accessories">
+    <title>Editing Products — <?= h(SITE_NAME) ?></title>
+    <meta name="description" content="Learn how an administrator can add and edit products in the catalogue.">
+    <meta name="keywords" content="Add Products, Edit Products, Product Catalog, Admin">
     <meta name="authors" content="Ronit Mahajan, Shameer Sheikh, Raphael Ceradoy, David Woo">
     <link rel="stylesheet" href="../styles/<?= h($theme) ?>.css">
+    <link rel="stylesheet" href="../styles/wiki.css">
 </head>
 <body class="theme-<?= h($theme) ?>">
     <div class="container">
@@ -58,26 +59,39 @@ $cart_image = get_theme_cart_image();
 
     <div class="containerIntro">
         <div class="introText">
-            <h1>Welcome to <?= h(SITE_NAME) ?>!</h1>
+            <h1>How to Edit the Product Catalog</h1>
             <p class="intro">
-                <?= h(SITE_NAME) ?> is your place to explore useful computer products and accessories.
+                This page explains how an administrator can add new products or update existing product records.
             </p>
-            <br>
-            <p class="intro">
-                Our online store offers a wide variety of items ranging from gaming gear and everyday accessories
-                to practical computer parts. Customers can browse products such as mice, headsets, controllers,
-                charging accessories, Ethernet cables, storage devices, and more.
-            </p>
-            <br>
-            <p class="intro">
-                Our goal is to provide a clean and user-friendly platform where shoppers can easily browse the
-                catalogue, view product details, and explore different theme styles across the site.
-            </p>
-            <br>
-            <p class="intro">
-                Whether you are a gamer, student, or general computer user, <?= h(SITE_NAME) ?> is designed to be
-                a convenient hub for everyday tech essentials.
-            </p>
+        </div>
+    </div>
+
+    <div class="featured">
+        <h1>Steps</h1>
+
+        <div class="wikiSection wikiContentWrap">
+            <ul class="wikiSteps">
+                <li>Log in using an <strong>admin account</strong>.</li>
+                <li>Open the admin area and go to the <strong>Products</strong> page.</li>
+                <li>To add a new item, click <strong>+ Add Product</strong>.</li>
+                <li>Enter the main product information, including category, title, brand, description, base price, stock, and image file.</li>
+                <li>Choose whether the product should be marked as <strong>Featured</strong> and whether it should be <strong>Active</strong>.</li>
+                <li>Enter at least <strong>two product options</strong> such as color, storage, connectivity, length, or wattage.</li>
+                <li>Click <strong>Create Product</strong> to save a new item, or click <strong>Save Changes</strong> when editing an existing one.</li>
+                <li>To update an existing item, go back to the Products page and click the <strong>Edit</strong> button beside that product.</li>
+            </ul>
+
+            <div class="wikiImageWrap">
+                <img class="wikiImage" src="../images/addProductForm1.png" alt="Screenshot of the product form page" width="489" height="262">
+            </div>
+        </div>
+
+        <div class="backButtonContainer">
+            <a href="Wiki.php" class="backButton">&larr; Back to Wiki</a>
+        </div>
+
+        <div class="backButtonContainer">
+            <a href="../index.php" class="backButton">&larr; Back to Home</a>
         </div>
     </div>
 

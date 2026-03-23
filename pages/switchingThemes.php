@@ -9,12 +9,12 @@ $cart_image = get_theme_cart_image();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us — <?= h(SITE_NAME) ?></title>
-    <meta name="description" content="Contact The Computer Store for support or questions.">
-    <meta name="keywords" content="Contact Support, Help, Get In Touch">
+    <title>Switching Themes — <?= h(SITE_NAME) ?></title>
+    <meta name="description" content="Learn how an admin can switch the site theme using the template manager.">
+    <meta name="keywords" content="Switching Site Themes, Light Mode, Dark Mode, Holiday Theme, Admin">
     <meta name="authors" content="Ronit Mahajan, Shameer Sheikh, Raphael Ceradoy, David Woo">
     <link rel="stylesheet" href="../styles/<?= h($theme) ?>.css">
-    <link rel="stylesheet" href="../styles/forms.css">
+    <link rel="stylesheet" href="../styles/wiki.css">
 </head>
 <body class="theme-<?= h($theme) ?>">
     <div class="container">
@@ -58,35 +58,38 @@ $cart_image = get_theme_cart_image();
     </div>
 
     <div class="containerIntro">
-        <div class="introText simpleFormWrap">
-            <h1>Contact Us</h1>
-            <p class="intro simpleFormIntro">
-                Send us a message if you have questions about products, orders, or the website.
+        <div class="introText">
+            <h1>How to Switch Site Themes</h1>
+            <p class="intro">
+                This page explains how an administrator can change the active site theme using the template manager.
             </p>
+        </div>
+    </div>
 
-            <form method="post" action="#" class="simpleForm">
-                <div class="simpleFormRow">
-                    <label class="simpleFormLabel" for="name">Name:</label>
-                    <input class="simpleFormInput" type="text" id="name" name="name" required>
-                </div>
+    <div class="featured">
+        <h1>Steps</h1>
 
-                <div class="simpleFormRow">
-                    <label class="simpleFormLabel" for="email">Email:</label>
-                    <input class="simpleFormInput" type="email" id="email" name="email" required>
-                </div>
+        <div class="wikiSection wikiContentWrap">
+            <ul class="wikiSteps">
+                <li>Log in using an <strong>admin account</strong>.</li>
+                <li>Open the admin area and go to the <strong>Templates</strong> page.</li>
+                <li>The page shows the available site themes: <strong>Light</strong>, <strong>Dark</strong>, and <strong>Holiday</strong>.</li>
+                <li>The currently active theme is clearly marked on the page.</li>
+                <li>Click the <strong>Activate Theme</strong> button on the theme you want to use.</li>
+                <li>Once selected, that theme becomes the active site-wide theme for the store.</li>
+            </ul>
 
-                <div class="simpleFormRow">
-                    <label class="simpleFormLabel" for="subject">Subject:</label>
-                    <input class="simpleFormInput" type="text" id="subject" name="subject" required>
-                </div>
+            <div class="wikiImageWrap">
+                <img class="wikiImage" src="../images/templatesMenu.png" alt="Screenshot of the template manager page" width="500" height="176">
+            </div>
+        </div>
 
-                <div class="simpleFormRow">
-                    <label class="simpleFormLabel" for="message">Message:</label>
-                    <textarea class="simpleFormTextarea" id="message" name="message" rows="5" required></textarea>
-                </div>
+        <div class="backButtonContainer">
+            <a href="Wiki.php" class="backButton">&larr; Back to Wiki</a>
+        </div>
 
-                <button class="simpleFormButton" type="submit">Send Message</button>
-            </form>
+        <div class="backButtonContainer">
+            <a href="../index.php" class="backButton">&larr; Back to Home</a>
         </div>
     </div>
 
