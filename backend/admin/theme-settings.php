@@ -74,6 +74,7 @@ $current_theme_label = $themes[$current_theme]['label'] ?? 'Light Theme';
                 <li><a href="theme-settings.php">Templates</a></li>
                 <li><a href="products.php">Products</a></li>
                 <li><a href="users.php">Users</a></li>
+                <li><a href="../../pages/adminDocumentation.html">Admin Docs</a></li>
                 <li><a href="../../pages/logout.php">Logout</a></li>
             </ul>
         </div>
@@ -94,6 +95,11 @@ $current_theme_label = $themes[$current_theme]['label'] ?? 'Light Theme';
 
         <p class="currentTheme">Current template: <?= h($current_theme_label) ?></p>
         <p class="templateNote">Your existing <code>active_theme</code> database setting is being used for the site theme.</p>
+        <p class="templateNote">
+            <a href="../../pages/switchingThemes.html"><u>Theme Manager Help</u></a>
+            &nbsp;|&nbsp;
+            <a href="../../pages/adminDocumentation.html"><u>Full Admin Guide</u></a>
+        </p>
     </div>
 
     <div class="featured">

@@ -313,6 +313,7 @@ $page_intro = $is_edit
                 <li><a href="theme-settings.php">Templates</a></li>
                 <li><a href="products.php">Products</a></li>
                 <li><a href="users.php">Users</a></li>
+                <li><a href="../../pages/adminDocumentation.html">Admin Docs</a></li>
                 <li><a href="../../pages/logout.php">Logout</a></li>
             </ul>
         </div>
@@ -334,6 +335,11 @@ $page_intro = $is_edit
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
+
+        <div class="formActions">
+            <a href="../../pages/editingProducts.html" class="btnSecondary">Help</a>
+            <a href="../../pages/adminDocumentation.html" class="btnSecondary">Admin Docs</a>
+        </div>
     </div>
 
     <div class="featured">

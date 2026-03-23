@@ -106,6 +106,7 @@ try {
                 <li><a href="theme-settings.php">Templates</a></li>
                 <li><a href="products.php">Products</a></li>
                 <li><a href="users.php">Users</a></li>
+                <li><a href="../../pages/adminDocumentation.html">Admin Docs</a></li>
                 <li><a href="../../pages/logout.php">Logout</a></li>
             </ul>
         </div>
@@ -140,6 +141,8 @@ try {
             </form>
 
             <a href="product-form.php" class="btnPrimary">+ Add Product</a>
+            <a href="../../pages/editingProducts.html" class="btnSecondary">Help</a>
+            <a href="../../pages/adminDocumentation.html" class="btnSecondary">Admin Docs</a>
         </div>
 
         <p class="pageCount"><?= count($products) ?> product record(s) shown</p>
