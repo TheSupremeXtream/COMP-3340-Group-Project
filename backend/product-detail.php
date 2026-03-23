@@ -106,7 +106,7 @@ $option_labels = [
                 <li><a href="products.php">Products</a></li>
                 <li><a href="../pages/About.php">About</a></li>
                 <li><a href="../pages/contactUs.php">Contact Us</a></li>
-                <li><a href="../pages/Wiki.php">Wiki</a></li>
+                <li><a href="../pages/Wiki.html">Wiki</a></li>
             </ul>
 
             <ul class="login">

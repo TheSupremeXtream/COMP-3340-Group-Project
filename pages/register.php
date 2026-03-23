@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <li><a href="../backend/products.php">Products</a></li>
                     <li><a href="About.php">About</a></li>
                     <li><a href="contactUs.php">Contact Us</a></li>
-                    <li><a href="Wiki.php">Wiki</a></li>
+                    <li><a href="Wiki.html">Wiki</a></li>
                 </ul>
 
                 <ul class="login">
