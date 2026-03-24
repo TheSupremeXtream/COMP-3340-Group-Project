@@ -1,12 +1,14 @@
 <?php
 require_once __DIR__ . '/config.php';
 
+/* Read and sanitise URL parameters for search, category, sort, and page */
 $search   = trim($_GET['q'] ?? '');
 $cat_slug = trim($_GET['cat'] ?? '');
 $sort     = trim($_GET['sort'] ?? 'title');
 $page     = max(1, (int) ($_GET['page'] ?? 1));
 $per_page = 10;
 
+/* Whitelist allowed sort options to prevent SQL injection */
 $allowed_sorts = [
     'title'      => 'p.title ASC',
     'price_asc'  => 'p.base_price ASC',
@@ -14,6 +16,7 @@ $allowed_sorts = [
 ];
 $order_sql = $allowed_sorts[$sort] ?? $allowed_sorts['title'];
 
+/* Build the WHERE clause dynamically based on active filters */
 $where_parts = ['p.is_active = 1'];
 $bind_params = [];
 
@@ -30,6 +33,7 @@ if ($cat_slug !== '') {
 
 $where_sql = 'WHERE ' . implode(' AND ', $where_parts);
 
+/* Query the database for the total count and current page of products */
 try {
     $pdo = get_db();
 
@@ -84,19 +88,14 @@ try {
     $db_error = 'Unable to load products: ' . $e->getMessage();
 }
 
+/* Build the pagination query string preserving active filters */
 $theme = get_active_theme();
 $cart_image = get_theme_cart_image();
 
 $query_parts = [];
-if ($search !== '') {
-    $query_parts['q'] = $search;
-}
-if ($cat_slug !== '') {
-    $query_parts['cat'] = $cat_slug;
-}
-if ($sort !== 'title') {
-    $query_parts['sort'] = $sort;
-}
+if ($search !== '') $query_parts['q'] = $search;
+if ($cat_slug !== '') $query_parts['cat'] = $cat_slug;
+if ($sort !== 'title') $query_parts['sort'] = $sort;
 $query_string = http_build_query($query_parts);
 $page_suffix = $query_string !== '' ? '&' . $query_string : '';
 ?>
@@ -115,6 +114,7 @@ $page_suffix = $query_string !== '' ? '&' . $query_string : '';
 </head>
 <body class="theme-<?= h($theme) ?>">
 
+    <!-- Site navigation -->
     <div class="container">
         <div class="navOuter">
             <div class="navInner">
@@ -131,7 +131,6 @@ $page_suffix = $query_string !== '' ? '&' . $query_string : '';
 
                 <ul class="login">
                     <li class="divider"></li>
-
                     <?php if (is_logged_in()): ?>
                         <?php if (is_admin()): ?>
                             <li><a href="../backend/admin/products.php">Admin</a></li>
@@ -166,16 +165,10 @@ $page_suffix = $query_string !== '' ? '&' . $query_string : '';
             <div class="alert-error">⚠️ <?= h($db_error) ?></div>
         <?php endif; ?>
 
+        <!-- Search, category, and sort filter form -->
         <form method="GET" action="products.php" class="filters-form">
             <label for="q" class="sr-only">Search products</label>
-            <input
-                type="search"
-                id="q"
-                name="q"
-                placeholder="Search name or brand…"
-                value="<?= h($search) ?>"
-                class="filter-search"
-            >
+            <input type="search" id="q" name="q" placeholder="Search name or brand…" value="<?= h($search) ?>" class="filter-search">
 
             <label for="cat" class="sr-only">Category</label>
             <select id="cat" name="cat" class="filter-select">
@@ -206,6 +199,8 @@ $page_suffix = $query_string !== '' ? '&' . $query_string : '';
                 <p>😕 No products match your search. <a href="products.php">Browse all products</a>.</p>
             </div>
         <?php else: ?>
+
+            <!-- Product grid -->
             <div class="products-grid">
                 <?php foreach ($products as $p): ?>
                     <?php $product_image = product_image_filename($p['image_file']); ?>
@@ -216,27 +211,19 @@ $page_suffix = $query_string !== '' ? '&' . $query_string : '';
                         <?php endif; ?>
 
                         <a href="product-detail.php?id=<?= (int) $p['id'] ?>" class="product-media">
-                            <img
-                                src="images/<?= h($product_image) ?>"
-                                alt="<?= h($p['title']) ?>"
-                                class="product-img"
-                                loading="lazy"
-                            >
+                            <img src="images/<?= h($product_image) ?>" alt="<?= h($p['title']) ?>" class="product-img" loading="lazy">
                         </a>
 
                         <div class="product-info">
                             <span class="product-category"><?= h($p['category_name']) ?></span>
-
                             <h2 class="product-title">
                                 <a href="product-detail.php?id=<?= (int) $p['id'] ?>"><?= h($p['title']) ?></a>
                             </h2>
-
                             <p class="product-brand">by <?= h($p['brand']) ?></p>
                             <p class="product-desc"><?= h(mb_strimwidth((string) $p['description'], 0, 110, '…')) ?></p>
 
                             <div class="product-footer">
                                 <span class="product-price">$<?= number_format((float) $p['base_price'], 2) ?></span>
-
                                 <?php if ((int) $p['stock'] > 0): ?>
                                     <span class="in-stock">In Stock</span>
                                 <?php else: ?>
@@ -250,16 +237,15 @@ $page_suffix = $query_string !== '' ? '&' . $query_string : '';
                 <?php endforeach; ?>
             </div>
 
+            <!-- Pagination links -->
             <?php if ($total_pages > 1): ?>
                 <nav class="pagination" aria-label="Product pages">
                     <?php if ($page > 1): ?>
                         <a href="?page=<?= $page - 1 . $page_suffix ?>" class="page-btn">&laquo; Prev</a>
                     <?php endif; ?>
-
                     <?php for ($i = 1; $i <= $total_pages; $i++): ?>
                         <a href="?page=<?= $i . $page_suffix ?>" class="page-btn <?= $i === $page ? 'active' : '' ?>"><?= $i ?></a>
                     <?php endfor; ?>
-
                     <?php if ($page < $total_pages): ?>
                         <a href="?page=<?= $page + 1 . $page_suffix ?>" class="page-btn">Next &raquo;</a>
                     <?php endif; ?>
