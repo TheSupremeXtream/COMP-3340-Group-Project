@@ -1,3 +1,4 @@
+<!-- Page for contacting support -->
 <?php
 require_once __DIR__ . '/../backend/config.php';
 
@@ -12,6 +13,7 @@ $message_text = '';
 $error = '';
 $success = '';
 
+/* form input validation */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['name'] ?? '');
     $email = trim($_POST['email'] ?? '');
@@ -49,6 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../styles/<?= h($theme) ?>.css">
     <link rel="stylesheet" href="../styles/forms.css">
 </head>
+
+<!-- Nagivation bar -->
 <body class="theme-<?= h($theme) ?>">
     <div class="container">
         <div class="navOuter">
@@ -105,6 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="simpleFormAlert success"><?= h($success) ?></div>
             <?php endif; ?>
 
+            <!-- Simple contact form  -->
             <form method="post" action="contactUs.php" class="simpleForm">
                 <div class="simpleFormRow">
                     <label class="simpleFormLabel" for="name">Name:</label>

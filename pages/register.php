@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
     $confirm_password = $_POST['confirm_password'] ?? '';
 
+    // Form input validation
     if ($full_name === '' || $username === '' || $email === '' || $password === '' || $confirm_password === '') {
         $error = 'Please fill in all fields.';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -79,6 +80,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../styles/<?= h($theme) ?>.css">
     <link rel="stylesheet" href="../styles/forms.css">
 </head>
+
+<!-- Nagivation bar -->
 <body class="theme-<?= h($theme) ?>">
     <div class="container">
         <div class="navOuter">
@@ -121,6 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="simpleFormAlert error"><?= h($error) ?></div>
             <?php endif; ?>
 
+            <!-- Simple account creation form -->
             <form method="post" action="register.php" class="simpleForm">
                 <div class="simpleFormRow">
                     <label class="simpleFormLabel" for="fullname">Full Name:</label>

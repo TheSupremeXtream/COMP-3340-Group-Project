@@ -15,6 +15,8 @@ $cart_image = get_theme_cart_image();
     <meta name="authors" content="Ronit Mahajan, Shameer Sheikh, Raphael Ceradoy, David Woo">
     <link rel="stylesheet" href="../styles/<?= h($theme) ?>.css">
 </head>
+
+<!-- Nagivation bar -->
 <body class="theme-<?= h($theme) ?>">
     <div class="container">
         <div class="navOuter">
@@ -56,6 +58,7 @@ $cart_image = get_theme_cart_image();
         </div>
     </div>
 
+    <!-- Description of business case -->
     <div class="containerIntro">
         <div class="introText">
             <h1>Welcome to <?= h(SITE_NAME) ?>!</h1>

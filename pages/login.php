@@ -20,12 +20,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
     $password = $_POST['password'] ?? '';
 
+    // Form input validation
     if ($username === '' || $password === '') {
         $error = 'Please enter both username and password.';
     } else {
         try {
             $pdo = get_db();
 
+            // Retrieve user account details
             $stmt = $pdo->prepare("
                 SELECT id, username, full_name, email, password, role, is_active
                 FROM users
@@ -39,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $user = $stmt->fetch();
 
+            // Check for valid username and password
             if (!$user || !password_verify($password, $user['password'])) {
                 $error = 'Invalid username/email or password.';
             } elseif ((int) $user['is_active'] !== 1) {
@@ -72,6 +75,8 @@ $redirect_value = trim((string) ($_GET['redirect'] ?? $_POST['redirect'] ?? ''))
     <link rel="stylesheet" href="../styles/<?= h($theme) ?>.css">
     <link rel="stylesheet" href="../styles/forms.css">
 </head>
+
+<!-- Nagivation bar -->
 <body class="theme-<?= h($theme) ?>">
     <div class="container">
         <div class="navOuter">
@@ -118,6 +123,7 @@ $redirect_value = trim((string) ($_GET['redirect'] ?? $_POST['redirect'] ?? ''))
                 <div class="simpleFormAlert success"><?= h($success) ?></div>
             <?php endif; ?>
 
+            <!-- Simple login form -->
             <form method="post" action="login.php" class="simpleForm">
                 <input type="hidden" name="redirect" value="<?= h($redirect_value) ?>">
 
