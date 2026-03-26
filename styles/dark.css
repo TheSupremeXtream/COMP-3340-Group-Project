@@ -8,8 +8,8 @@
 
 body {
     font-family: Verdana, Arial, sans-serif;
-    background: #111827;
-    color: #e5e7eb;
+    background: #333232;
+    color: #222;
     line-height: 1.5;
 }
 
@@ -41,9 +41,9 @@ main {
 /* Navbar */
 
 .navOuter {
-    background: #0f172a;
-    border-bottom: 2px solid #1e293b;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+    background: #c22333;
+    border-bottom: 2px solid #b42634;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .navInner {
@@ -62,7 +62,7 @@ main {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: #f8fafc;
+    color: #fff;
     font-size: 1.7rem;
     font-weight: bold;
     white-space: nowrap;
@@ -92,7 +92,7 @@ main {
 .navList li a,
 .login li a {
     display: block;
-    color: #e2e8f0;
+    color: #fff;
     padding: 12px 14px;
     font-size: 0.95rem;
     transition: background 0.2s ease, color 0.2s ease;
@@ -101,8 +101,7 @@ main {
 
 .navList li a:hover,
 .login li a:hover {
-    background: rgba(96, 165, 250, 0.12);
-    color: #ffffff;
+    background: rgba(255, 255, 255, 0.14);
 }
 
 .login {
@@ -121,7 +120,7 @@ main {
 
 .cart a:hover,
 .toggle a:hover {
-    background: rgba(96, 165, 250, 0.12);
+    background: rgba(255, 255, 255, 0.14);
 }
 
 .cart img,
@@ -133,51 +132,51 @@ main {
 .divider {
     width: 1px;
     height: 28px;
-    background: rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.35);
     margin: 0 10px;
 }
 
 /* Intro */
 
 .containerIntro {
-    background: #1f2937;
+    background: #ffffff;
     margin-top: 22px;
     padding: 50px 40px;
-    border: 1px solid #334155;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid #c7c7c7;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .introText h1 {
     font-size: 2.2rem;
-    color: #60a5fa;
+    color: #c22333;
     margin-bottom: 14px;
-    border-bottom: 2px solid #334155;
+    border-bottom: 2px solid #ececec;
     padding-bottom: 8px;
 }
 
 .intro {
     font-size: 1.05rem;
     max-width: 850px;
-    color: #cbd5e1;
+    color: #333;
 }
 
 /* Sectioned */
 
 .featured,
 .multimedia {
-    background: #1f2937;
+    background: #ffffff;
     margin-top: 24px;
     padding: 28px 30px 34px;
-    border: 1px solid #334155;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid #c7c7c7;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .featured h1,
 .multimedia h1 {
     font-size: 1.7rem;
-    color: #60a5fa;
+    color: #c22333;
     margin-bottom: 20px;
-    border-bottom: 2px solid #334155;
+    border-bottom: 2px solid #ececec;
     padding-bottom: 8px;
 }
 
@@ -191,11 +190,11 @@ main {
 }
 
 .featuredProducts a {
-    background: #0f172a;
-    border: 1px solid #334155;
+    background: #fafafa;
+    border: 1px solid #d9d9d9;
     border-radius: 6px;
     padding: 18px 14px;
-    color: #e5e7eb;
+    color: #222;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -206,8 +205,8 @@ main {
 
 .featuredProducts a:hover {
     transform: translateY(-4px);
-    border-color: #60a5fa;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+    border-color: #c22333;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
 }
 
 .featuredProducts a img {
@@ -225,7 +224,7 @@ main {
 .featuredProducts p {
     grid-column: 1 / -1;
     margin-top: 6px;
-    color: #94a3b8;
+    color: #555;
     font-style: italic;
     text-align: center;
 }
@@ -234,8 +233,8 @@ main {
 
 .mediaVideo {
     margin-top: 10px;
-    background: #0f172a;
-    border: 1px solid #334155;
+    background: #f6f6f6;
+    border: 1px solid #d8d8d8;
     padding: 16px;
     border-radius: 6px;
 }
@@ -341,4 +340,71 @@ main {
     .featuredProducts {
         grid-template-columns: 1fr;
     }
+}
+
+/* Anything below here was added by Raphael Ceradoy */
+
+/* Wiki Button List */
+
+.wikiList {
+    list-style: none;
+    margin-top: 20px;
+    display: grid;
+    gap: 12px;
+    justify-content: center;
+}
+
+.wikiList li {
+    width: 100%;
+    max-width: 400px;
+}
+
+.wikiList li a {
+    display: block;
+    text-align: center;
+
+    background: #fafafa;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+    padding: 14px 16px;
+    color: #222;
+    font-weight: bold;
+
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.wikiList li a:hover {
+    transform: translateY(-3px);
+    border-color: #c22333;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+    background: #ffffff;
+}
+
+
+/* Back Button */
+
+.backButtonContainer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.backButton {
+    display: inline-block;
+    background: #c22333;
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.backButton:hover {
+    background: #4f0910;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.wikiSection {
+    text-align: center;
+    margin-bottom: 15px;
 }

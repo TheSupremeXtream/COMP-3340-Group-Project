@@ -164,7 +164,7 @@ function get_product_image_map(): array
         'usb-c-power-bank.jpg' => 'usb-c-power-bank.jpg',
         'usb-c-extension-cable.jpg' => 'usb-c-extension-cable.jpg',
         'controller.jpg' => 'Red_Controller.png',
-        'laptop-stand.jpg' => 'Chargers.webp',
+        'laptop-stand.jpg' => 'laptop-stand.jpg',
     ];
 }
 

@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const displayPrice = document.getElementById('display-price');
     const totalPrice = document.getElementById('total-price');
     const cartMsg = document.getElementById('cart-msg');
+    const mainImage = document.getElementById('main-image');
 
     if (!form || !quantityInput || !basePriceInput || !displayPrice || !totalPrice) {
         return;
@@ -12,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const basePrice = parseFloat(basePriceInput.value) || 0;
     const selectedDeltas = {};
+    const defaultImage = mainImage ? mainImage.dataset.defaultImage : '';
 
     function updatePrice() {
         const qty = parseInt(quantityInput.value, 10) || 1;
@@ -23,6 +25,17 @@ document.addEventListener('DOMContentLoaded', () => {
         totalPrice.textContent = '$' + total.toFixed(2);
     }
 
+    function updateImage() {
+        if (!mainImage) return;
+        let selectedImage = '';
+        document.querySelectorAll('.option-btn.selected').forEach((button) => {
+            if (button.dataset.type === 'color' && button.dataset.image) {
+                selectedImage = 'images/' + button.dataset.image;
+            }
+        });
+        mainImage.src = selectedImage || defaultImage;
+    }
+
     function selectOption(button, type) {
         document.querySelectorAll(`.option-btn[data-type="${type}"]`).forEach((btn) => {
             btn.classList.remove('selected');
@@ -31,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.classList.add('selected');
         selectedDeltas[type] = parseFloat(button.dataset.delta || '0') || 0;
         updatePrice();
+        updateImage();
     }
 
     function changeQty(amount) {
@@ -78,4 +92,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     updatePrice();
+    updateImage();
 });

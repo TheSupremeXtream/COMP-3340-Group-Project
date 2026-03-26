@@ -27,7 +27,7 @@ try {
     }
 
     $opts_stmt = $pdo->prepare("
-        SELECT id, product_id, option_type, option_value, price_delta
+        SELECT id, product_id, option_type, option_value, option_image, price_delta
         FROM product_options
         WHERE product_id = :id
         ORDER BY option_type, id
@@ -153,6 +153,7 @@ $option_labels = [
                     id="main-image"
                     src="images/<?= h($product_image) ?>"
                     alt="<?= h($product['title']) ?>"
+                    data-default-image="images/<?= h($product_image) ?>"
                 >
             </div>
 
@@ -191,6 +192,7 @@ $option_labels = [
                                     class="option-btn <?= $i === 0 ? 'selected' : '' ?>"
                                     data-delta="<?= (float) $opt['price_delta'] ?>"
                                     data-type="<?= h($type) ?>"
+                                    data-image="<?= h(product_image_filename((string) ($opt['option_image'] ?? ''))) ?>"
                                 >
                                     <?= h($opt['option_value']) ?>
 
