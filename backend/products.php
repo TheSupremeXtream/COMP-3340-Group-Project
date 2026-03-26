@@ -118,12 +118,12 @@ $page_suffix = $query_string !== '' ? '&' . $query_string : '';
     <div class="container">
         <div class="navOuter">
             <div class="navInner">
-                <a href="../index.php" class="banner">
+                <a href="../index.php" class="banner whoosh-link">
                     <img src="../images/logo.png" alt="<?= h(SITE_NAME) ?>" height="60"><?= h(SITE_NAME) ?>
                 </a>
 
                 <ul class="navList">
-                    <li><a href="products.php">Products</a></li>
+                    <li><a href="products.php" class="whoosh-link"> Products</a></li>
                     <li><a href="../pages/About.php">About</a></li>
                     <li><a href="../pages/contactUs.php">Contact Us</a></li>
                     <li><a href="../pages/Wiki.html">Wiki</a></li>
@@ -210,14 +210,14 @@ $page_suffix = $query_string !== '' ? '&' . $query_string : '';
                             <span class="badge-featured">⭐ Featured</span>
                         <?php endif; ?>
 
-                        <a href="product-detail.php?id=<?= (int) $p['id'] ?>" class="product-media">
+                        <a href="product-detail.php?id=<?= (int) $p['id'] ?>" class="product-media whoosh-link">
                             <img src="images/<?= h($product_image) ?>" alt="<?= h($p['title']) ?>" class="product-img" loading="lazy">
                         </a>
 
                         <div class="product-info">
                             <span class="product-category"><?= h($p['category_name']) ?></span>
                             <h2 class="product-title">
-                                <a href="product-detail.php?id=<?= (int) $p['id'] ?>"><?= h($p['title']) ?></a>
+                                <a href="product-detail.php?id=<?= (int) $p['id'] ?>" class="whoosh-link"><?= h($p['title']) ?></a>
                             </h2>
                             <p class="product-brand">by <?= h($p['brand']) ?></p>
                             <p class="product-desc"><?= h(mb_strimwidth((string) $p['description'], 0, 110, '…')) ?></p>
@@ -231,7 +231,7 @@ $page_suffix = $query_string !== '' ? '&' . $query_string : '';
                                 <?php endif; ?>
                             </div>
 
-                            <a href="product-detail.php?id=<?= (int) $p['id'] ?>" class="btn-view">View Details</a>
+                            <a href="product-detail.php?id=<?= (int) $p['id'] ?>" class="btn-view whoosh-link">View Details</a>
                         </div>
                     </article>
                 <?php endforeach; ?>
@@ -258,6 +258,8 @@ $page_suffix = $query_string !== '' ? '&' . $query_string : '';
     <footer class="site-footer">
         <p>&copy; <?= date('Y') ?> <?= h(SITE_NAME) ?> — All rights reserved.</p>
     </footer>
-
+    <audio id="whoosh" src="../multimedia/whoosh.mp3" preload="auto"></audio>
+    <audio id="bell" src="../multimedia/bell.mp3" preload="auto"></audio>
+    <script src="assets/js/whoosh.js"></script>
 </body>
 </html>

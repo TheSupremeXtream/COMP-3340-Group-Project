@@ -261,7 +261,8 @@ $option_labels = [
 <footer class="site-footer">
     <p>&copy; <?= date('Y') ?> <?= h(SITE_NAME) ?> — All rights reserved.</p>
 </footer>
-
+<audio id="whoosh" src="../multimedia/whoosh.mp3" preload="auto"></audio>
+<audio id="bell" src="../multimedia/bell.mp3" preload="auto"></audio>
 <script src="assets/js/product-detail.js"></script>
 </body>
 </html>

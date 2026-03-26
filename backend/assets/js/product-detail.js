@@ -79,8 +79,15 @@ document.addEventListener('DOMContentLoaded', () => {
         increaseBtn.addEventListener('click', () => changeQty(1));
     }
 
+    const bell = document.getElementById('bell');
+
     form.addEventListener('submit', (event) => {
         event.preventDefault();
+
+        if (bell) {
+            bell.currentTime = 0;
+            bell.play();
+        }
 
         if (cartMsg) {
             cartMsg.style.display = 'block';

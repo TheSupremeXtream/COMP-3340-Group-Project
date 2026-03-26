@@ -19,12 +19,12 @@ $cart_image = get_theme_cart_image();
     <div class="container">
         <div class="navOuter">
             <div class="navInner">
-                <a href="index.php" class="banner">
+                <a href="index.php" class="banner whoosh-link">
                     <img src="images/logo.png" alt="<?= h(SITE_NAME) ?>" height="60"><?= h(SITE_NAME) ?>
                 </a>
 
                 <ul class="navList">
-                    <li><a href="backend/products.php">Products</a></li>
+                    <li><a href="backend/products.php" class="whoosh-link">Products</a></li>
                     <li><a href="pages/About.php">About</a></li>
                     <li><a href="pages/contactUs.php">Contact Us</a></li>
                     <li><a href="pages/Wiki.html">Wiki</a></li>
@@ -35,7 +35,7 @@ $cart_image = get_theme_cart_image();
 
                     <?php if (is_logged_in()): ?>
                         <?php if (is_admin()): ?>
-                            <li><a href="backend/admin/products.php">Admin</a></li>
+                            <li><a href="backend/admin/products.php" class="whoosh-link">Admin</a></li>
                         <?php endif; ?>
                         <li><a href="pages/logout.php">Logout</a></li>
                     <?php else: ?>
@@ -70,19 +70,19 @@ $cart_image = get_theme_cart_image();
         <div class="featured">
             <h1>Featured Products:</h1>
             <div class="featuredProducts">
-                <a href="backend/product-detail.php?id=2">
+                <a href="backend/product-detail.php?id=2" class="whoosh-link">
                     <img src="backend/images/SSD.jpg" alt="Raspberry Pi SSD" height="60">Raspberry Pi SSD
                 </a>
-                <a href="backend/product-detail.php?id=3">
+                <a href="backend/product-detail.php?id=3" class="whoosh-link">
                     <img src="backend/images/Gaming_Mouse.jpg" alt="Gaming Mouse" height="60">Gaming Mouse
                 </a>
-                <a href="backend/product-detail.php?id=17">
+                <a href="backend/product-detail.php?id=17" class="whoosh-link">
                     <img src="backend/images/Blue_Charger.png" alt="USB-C Power Bank" height="60">USB-C Power Bank
                 </a>
-                <a href="backend/product-detail.php?id=13">
+                <a href="backend/product-detail.php?id=13" class="whoosh-link">
                     <img src="backend/images/USB_Type-C_Cable.jpg" alt="USB Type-C Cable" height="60">USB Type-C Cable
                 </a>
-                <a href="backend/product-detail.php?id=5">
+                <a href="backend/product-detail.php?id=5" class="whoosh-link">
                     <img src="backend/images/Gaming_Headset.jpg" alt="Gaming Headset" height="60">Gaming Headset
                 </a>
 
@@ -94,10 +94,14 @@ $cart_image = get_theme_cart_image();
             <h1>Store Overview</h1>
             <div class="mediaVideo">
                 <video controls width="100%">
-                    <source src="videos/main.mp4" type="video/mp4">
+                    <source src="multimedia/electronic.mp3" type="audio/mpeg">
+                    <!-- <source src="multimedia/main.mp4" type="video/mp4"> Temporarily commented-->
                 </video>
             </div>
         </div>
     </main>
+    <audio id="whoosh" src="multimedia/whoosh.mp3" preload="auto"></audio>
+    <audio id="bell" src="multimedia/bell.mp3" preload="auto"></audio>
+    <script src="backend/assets/js/whoosh.js"></script>
 </body>
 </html>
