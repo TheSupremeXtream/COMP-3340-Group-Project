@@ -7,17 +7,17 @@ $themes = [
     'light' => [
         'label' => 'Light Theme',
         'description' => 'Default bright layout with the original store look and red accents.',
-        'swatch' => 'swatch-light',
+        'switch' => 'switch-light',
     ],
     'dark' => [
         'label' => 'Dark Theme',
         'description' => 'Dark layout for a cooler look that still keeps the same site structure.',
-        'swatch' => 'swatch-dark',
+        'switch' => 'switch-dark',
     ],
     'holiday' => [
         'label' => 'Holiday Theme',
         'description' => 'Festive green and red layout for seasonal promotions and special events.',
-        'swatch' => 'swatch-holiday',
+        'switch' => 'switch-holiday',
     ],
 ];
 
@@ -115,7 +115,7 @@ $current_theme_label = $themes[$current_theme]['label'] ?? 'Light Theme';
                         <?php endif; ?>
                     </div>
 
-                    <div class="themeSwatch <?= h($theme_item['swatch']) ?>"></div>
+                    <div class="themeSwitch <?= h($theme_item['switch']) ?>"></div>
 
                     <p><?= h($theme_item['description']) ?></p>
 

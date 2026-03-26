@@ -53,21 +53,21 @@ body.theme-holiday .themeCard p {
     color: #4c3c2e;
 }
 
-.themeSwatch {
+.themeSwitch {
     height: 96px;
     border-radius: 6px;
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.swatch-light {
+.switch-light {
     background: linear-gradient(135deg, #ffffff 0%, #f0d7db 100%);
 }
 
-.swatch-dark {
+.switch-dark {
     background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%);
 }
 
-.swatch-holiday {
+.switch-holiday {
     background: linear-gradient(135deg, #0f5132 0%, #fff3e0 55%, #a61b29 100%);
 }
 
