@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS products (
 INSERT INTO products (category_id, title, brand, description, base_price, stock, image_file, is_featured) VALUES
 (1, 'External HDD',             'Seagate',       'Portable external hard drive, USB 3.0, compact and reliable for backups and file transfers.',        59.99,  80, 'HDD.jpg',                             1),
 (1, 'Raspberry Pi SSD',         'SanDisk',       'High-speed SSD designed for Raspberry Pi and single-board computers, fast boot times.',              29.99,  60, 'SSD.jpg',                             0),
-(3, 'Computer Mouse',           'Logitech',      'Ergonomic computer mouse, smooth tracking on all surfaces, comfortable for long use sessions.',       24.99, 100, 'Mouse.jpg',                           1),
+(3, 'Gaming Mouse',             'Logitech',      'Ergonomic computer mouse, smooth tracking on all surfaces, comfortable for long use sessions.',       24.99, 100, 'Gaming_Mouse.jpg',                           1),
 (2, 'Headphones',               'Sony',          'Over-ear stereo headphones with rich sound, padded earcups, and foldable design.',                    49.99,  55, 'Headphones.jpg',                      0),
 (2, 'Gaming Headset',           'HyperX',        '7.1 surround sound gaming headset with noise-cancelling mic and memory foam earcups.',                69.99,  45, 'Gaming_Headset.jpg',                  1),
 (2, 'Microphone',               'Blue',          'Studio-quality condenser microphone, ideal for streaming, podcasting, and video calls.',              89.99,  35, 'Microphone.jpg',                      1),

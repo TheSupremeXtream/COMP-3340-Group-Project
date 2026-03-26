@@ -76,8 +76,8 @@ $cart_image = get_theme_cart_image();
                 <a href="backend/product-detail.php?id=3">
                     <img src="backend/images/Gaming_Mouse.jpg" alt="Gaming Mouse" height="60">Gaming Mouse
                 </a>
-                <a href="backend/product-detail.php?id=15">
-                    <img src="backend/images/Blue_Charger.png" alt="USB-C Charging Brick" height="60">USB-C Charging Brick
+                <a href="backend/product-detail.php?id=17">
+                    <img src="backend/images/Blue_Charger.png" alt="USB-C Power Bank" height="60">USB-C Power Bank
                 </a>
                 <a href="backend/product-detail.php?id=13">
                     <img src="backend/images/USB_Type-C_Cable.jpg" alt="USB Type-C Cable" height="60">USB Type-C Cable
