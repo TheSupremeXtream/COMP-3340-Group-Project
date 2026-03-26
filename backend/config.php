@@ -170,7 +170,7 @@ function get_product_image_map(): array
 
 function product_image_filename(?string $image_file): string
 {
-    $fallback = 'Chargers.webp';
+    $fallback = 'laptop-stand.jpg';
     $file = trim((string) $image_file);
 
     if ($file === '') {
