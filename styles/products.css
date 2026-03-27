@@ -338,6 +338,10 @@
 
 /* Dark theme */
 
+body.theme-dark .catalogue-heading h1 {
+    color: #f8fafc;
+}
+
 body.theme-dark .catalogue-heading p,
 body.theme-dark .site-footer {
     color: #cbd5e1;

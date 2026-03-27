@@ -1,9 +1,10 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #f8fafc;
-    color: #1e293b;
+    font-family: Verdana, Arial, sans-serif;
+    background: #333232;
+    color: #222;
+    line-height: 1.5;
 }
 
 .header-inner {
@@ -272,7 +273,7 @@ body {
     font-size: 1.4rem;
     font-weight: 800;
     margin-bottom: 1.25rem;
-    color: #0f172a;
+    color: #c22333;
 }
 
 .related-grid {
@@ -332,4 +333,141 @@ body {
 @media (max-width: 480px) {
     .site-nav { display: none; }
     .related-grid { grid-template-columns: 1fr; }
+}
+
+/* Dark theme */
+
+body.theme-dark .detail-main {
+    color: #e5e7eb;
+}
+
+body.theme-dark .breadcrumb {
+    color: #94a3b8;
+}
+
+body.theme-dark .breadcrumb a {
+    color: #60a5fa;
+}
+
+body.theme-dark .breadcrumb a:hover {
+    color: #93c5fd;
+}
+
+body.theme-dark .main-image-wrap {
+    background: #1f2937;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+body.theme-dark .featured-badge {
+    background: #3b2f12;
+    color: #fcd34d;
+}
+
+body.theme-dark .detail-category {
+    color: #60a5fa;
+    background: #0f172a;
+}
+
+body.theme-dark .detail-title,
+body.theme-dark .detail-price {
+    color: #f8fafc;
+}
+
+body.theme-dark .detail-brand,
+body.theme-dark .detail-desc,
+body.theme-dark .option-label {
+    color: #cbd5e1;
+}
+
+body.theme-dark .stock-badge.in-stock {
+    background: #14532d;
+    color: #86efac;
+}
+
+body.theme-dark .stock-badge.out-of-stock {
+    background: #7f1d1d;
+    color: #fca5a5;
+}
+
+body.theme-dark .option-btn {
+    background: #0f172a;
+    color: #e5e7eb;
+    border-color: #334155;
+}
+
+body.theme-dark .option-btn:hover {
+    border-color: #60a5fa;
+    color: #93c5fd;
+}
+
+body.theme-dark .option-btn.selected {
+    border-color: #60a5fa;
+    background: #172033;
+    color: #93c5fd;
+}
+
+body.theme-dark .opt-delta {
+    color: #86efac;
+}
+
+body.theme-dark .qty-controls {
+    border-color: #334155;
+}
+
+body.theme-dark .qty-controls button {
+    background: #0f172a;
+    color: #e5e7eb;
+}
+
+body.theme-dark .qty-controls button:hover {
+    background: #172033;
+    color: #93c5fd;
+}
+
+body.theme-dark .qty-controls input {
+    background: #1f2937;
+    color: #f8fafc;
+    border-left: 1px solid #334155;
+    border-right: 1px solid #334155;
+}
+
+body.theme-dark .add-cart-btn,
+body.theme-dark .buy-now-btn,
+body.theme-dark .detail-action-btn,
+body.theme-dark .related-card a,
+body.theme-dark .related-link {
+    background: #1d4ed8;
+    color: #ffffff;
+    border-color: #1d4ed8;
+}
+
+body.theme-dark .add-cart-btn:hover,
+body.theme-dark .buy-now-btn:hover,
+body.theme-dark .detail-action-btn:hover,
+body.theme-dark .related-card a:hover,
+body.theme-dark .related-link:hover {
+    background: #1e40af;
+    border-color: #1e40af;
+}
+
+body.theme-dark .related-card,
+body.theme-dark .detail-panel,
+body.theme-dark .info-card {
+    background: #1f2937;
+    border-color: #334155;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+}
+
+body.theme-dark .related-card h3,
+body.theme-dark .related-card .title,
+body.theme-dark .related-title,
+body.theme-dark .panel-title {
+    color: #f8fafc;
+}
+
+body.theme-dark .related-card p,
+body.theme-dark .related-card .brand,
+body.theme-dark .related-card .price,
+body.theme-dark .related-card .desc {
+    color: #cbd5e1;
 }
