@@ -41,8 +41,8 @@ main {
 /* Navbar */
 
 .navOuter {
-    background: #c22333;
-    border-bottom: 2px solid #b42634;
+    background: #0f5132;
+    border-bottom: 2px solid #0b3b25;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
@@ -148,7 +148,7 @@ main {
 
 .introText h1 {
     font-size: 2.2rem;
-    color: #c22333;
+    color: #0f5132;
     margin-bottom: 14px;
     border-bottom: 2px solid #ececec;
     padding-bottom: 8px;
@@ -174,7 +174,7 @@ main {
 .featured h1,
 .multimedia h1 {
     font-size: 1.7rem;
-    color: #c22333;
+    color: #0f5132;
     margin-bottom: 20px;
     border-bottom: 2px solid #ececec;
     padding-bottom: 8px;
@@ -205,7 +205,7 @@ main {
 
 .featuredProducts a:hover {
     transform: translateY(-4px);
-    border-color: #c22333;
+    border-color: #0f5132;
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
 }
 
@@ -375,7 +375,7 @@ main {
 
 .wikiList li a:hover {
     transform: translateY(-3px);
-    border-color: #c22333;
+    border-color: #0f5132;
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
     background: #ffffff;
 }
@@ -390,7 +390,7 @@ main {
 
 .backButton {
     display: inline-block;
-    background: #c22333;
+    background: #0f5132;
     color: #fff;
     padding: 10px 16px;
     border-radius: 4px;

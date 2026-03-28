@@ -1,12 +1,5 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-body {
-    font-family: Verdana, Arial, sans-serif;
-    background: #333232;
-    color: #222;
-    line-height: 1.5;
-}
-
 .header-inner {
     max-width: 1200px;
     margin: 0 auto;
