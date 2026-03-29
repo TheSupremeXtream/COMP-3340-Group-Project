@@ -1,8 +1,10 @@
 <?php
+/* Shameer Sheikh worked on the frontend admin interface parts in this file. */
 require_once __DIR__ . '/../config.php';
 
 require_admin();
 
+/* Theme options shown in the admin template manager */
 $themes = [
     'light' => [
         'label' => 'Light Theme',
@@ -24,6 +26,7 @@ $themes = [
 $message = '';
 $message_class = 'success';
 
+/* Handle admin theme selection form submission */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $selected_theme = trim($_POST['theme'] ?? '');
 
@@ -47,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+/* Read the currently active site theme */
 $current_theme = get_active_theme();
 $current_theme_label = $themes[$current_theme]['label'] ?? 'Light Theme';
 ?>
