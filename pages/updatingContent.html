@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Updating Site Content</title>
+    <meta name="description" content="Instructions for updating images, video, audio, and product content for The Computer Store.">
+    <meta name="keywords" content="Update Content, Images, Video, Audio, Product Content, Website Help">
+    <meta name="authors" content="Ronit Mahajan, Shameer Sheikh, Raphael Ceradoy, David Woo">
+    <link rel="stylesheet" href="../styles/light.css">
+    <link rel="stylesheet" href="../styles/wiki.css">
+</head>
+<body class="theme-light">
+
+    <div class="wikiSection">
+        <div class="wikiContentWrap">
+            <h3>How to Update Site Content</h3>
+
+            <div class="wikiTextBlock">
+                <p class="wikiIntroCenter">
+                    This page explains how to update the website content in a simple way. These steps are
+                    written for someone who may not be a programmer and needs to change product images,
+                    multimedia files, or text content.
+                </p>
+
+                <ol class="wikiSteps">
+                    <li>
+                        <strong>Updating product records</strong><br>
+                        Log in as an administrator and open the <strong>Products</strong> page in the admin area.
+                        You can add a new product or edit an existing one using the product form.
+                    </li>
+                    <li>
+                        <strong>Updating the main product image</strong><br>
+                        First place the new image file inside the <strong>backend/images</strong> folder.
+                        After that, open the product in the admin form and type the image filename exactly
+                        as it appears in that folder. Example: <strong>Gaming_Mouse.jpg</strong>.
+                    </li>
+                    <li>
+                        <strong>Updating option images</strong><br>
+                        Some option records, such as color choices, can use their own image files.
+                        These image files should also be stored in the <strong>backend/images</strong> folder.
+                        The option image filename should match the file stored in that folder.
+                    </li>
+                    <li>
+                        <strong>Adding new catalogue images</strong><br>
+                        Save the image into <strong>backend/images</strong>. Use a short and clear filename with
+                        no spaces when possible. Good examples are <strong>Red_Controller.png</strong> or
+                        <strong>USB-C_Hub.jpg</strong>.
+                    </li>
+                    <li>
+                        <strong>Updating wiki screenshots and page images</strong><br>
+                        Images used by the help wiki pages are stored in the top-level <strong>images</strong> folder.
+                        Replace the old screenshot with a new one using the same filename, or update the filename
+                        inside the corresponding HTML page if needed.
+                    </li>
+                    <li>
+                        <strong>Updating the home page video</strong><br>
+                        The main store video is stored in the <strong>multimedia</strong> folder.
+                        The current home page uses the file <strong>promo.mp4</strong>. To replace the video,
+                        either keep the new file named <strong>promo.mp4</strong> or update the filename inside
+                        <strong>index.php</strong>.
+                    </li>
+                    <li>
+                        <strong>Updating audio files</strong><br>
+                        Audio files such as <strong>bell.mp3</strong> and <strong>whoosh.mp3</strong> are stored in
+                        the <strong>multimedia</strong> folder. If you replace them using the same filename,
+                        the website will continue to use them automatically.
+                    </li>
+                    <li>
+                        <strong>Updating page text</strong><br>
+                        Static information pages such as the wiki pages are stored in the <strong>pages</strong>
+                        folder. Open the matching HTML or PHP file and change the visible text between the tags.
+                    </li>
+                    <li>
+                        <strong>Keeping file names consistent</strong><br>
+                        Make sure the filename written in the code matches the real file exactly, including
+                        capitalization and file extension such as <strong>.jpg</strong>, <strong>.png</strong>,
+                        <strong>.webp</strong>, <strong>.mp3</strong>, or <strong>.mp4</strong>.
+                    </li>
+                    <li>
+                        <strong>Final check after updating content</strong><br>
+                        After replacing files or editing page text, refresh the website and visit the related page
+                        to make sure the image, video, audio, or product content appears correctly.
+                    </li>
+                </ol>
+
+                <p>
+                    In general, the easiest way to update content is to keep the same filename and replace the
+                    old file with the new one in the correct folder. This avoids needing extra code changes.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="backButtonContainer">
+        <a href="Wiki.html" class="backButton">&larr; Back to Wiki</a>
+    </div>
+
+    <div class="backButtonContainer">
+        <a href="../index.php" class="backButton">&larr; Back to Home</a>
+    </div>
+
+</body>
+</html>

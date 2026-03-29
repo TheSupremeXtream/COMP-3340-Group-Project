@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Design</title>
+    <meta name="description" content="Documentation for the PHP and MySQL database design used by The Computer Store.">
+    <meta name="keywords" content="Database Design, MySQL, PHP, Documentation, The Computer Store">
+    <meta name="authors" content="Ronit Mahajan, Shameer Sheikh, Raphael Ceradoy, David Woo">
+    <link rel="stylesheet" href="../styles/light.css">
+    <link rel="stylesheet" href="../styles/wiki.css">
+</head>
+<body class="theme-light">
+
+    <div class="wikiSection">
+        <div class="wikiContentWrap">
+            <h3>PHP and MySQL Database Design</h3>
+
+            <div class="wikiTextBlock">
+                <p class="wikiIntroCenter">
+                    This page explains the database design and PHP structure used by The Computer Store.
+                    The website uses PHP for server-side functionality and MySQL for storing products,
+                    categories, users, orders, site settings, and system monitoring data.
+                </p>
+
+                <p>
+                    The main PHP configuration file is <strong>backend/config.php</strong>. This file handles
+                    the database connection, HTML escaping helper functions, session startup, login state,
+                    admin checks, theme selection, redirect safety, and shared reusable functionality used
+                    by multiple pages across the website.
+                </p>
+
+                <p>
+                    The main database file is <strong>backend/database.sql</strong>. It creates the database
+                    named <strong>store_db</strong> and defines the tables required by the site. The database
+                    is imported automatically by <strong>backend/install.php</strong> when the project is run
+                    on a new local setup.
+                </p>
+
+                <ol class="wikiSteps">
+                    <li>
+                        <strong>categories</strong><br>
+                        Stores product categories such as Storage, Audio, Input Devices, Cables, Power,
+                        and Accessories. Each category has an ID, name, slug, description, and creation date.
+                    </li>
+                    <li>
+                        <strong>products</strong><br>
+                        Stores the main catalogue records. Each product belongs to a category and includes
+                        the title, brand, description, base price, stock amount, image filename, featured
+                        flag, active flag, and creation date.
+                    </li>
+                    <li>
+                        <strong>product_options</strong><br>
+                        Stores selectable options for each product. Examples include color, storage,
+                        connectivity, length, and wattage. Each option is connected to one product and can
+                        also include an optional image and a price difference.
+                    </li>
+                    <li>
+                        <strong>users</strong><br>
+                        Stores registered accounts. Each user has a username, email, hashed password,
+                        full name, role, active status, and account creation date. Roles are either
+                        <strong>customer</strong> or <strong>admin</strong>.
+                    </li>
+                    <li>
+                        <strong>orders</strong><br>
+                        Stores order records placed by users. Each order includes the related user,
+                        total price, order status, and creation date.
+                    </li>
+                    <li>
+                        <strong>order_items</strong><br>
+                        Stores the individual items that belong to an order. Each record connects an
+                        order to a product and stores quantity, unit price, and selected options.
+                    </li>
+                    <li>
+                        <strong>site_settings</strong><br>
+                        Stores website-wide settings such as the currently active theme, site name,
+                        and maintenance mode.
+                    </li>
+                    <li>
+                        <strong>service_log</strong><br>
+                        Stores monitoring results from the backend monitor page. Each record stores
+                        the service name, status, response time, detail text, and check time.
+                    </li>
+                </ol>
+
+                <p>
+                    The database uses foreign key relationships to keep records connected correctly.
+                    For example, each product belongs to one category, each product option belongs to
+                    one product, and each order item belongs to both an order and a product.
+                </p>
+
+                <p>
+                    In the PHP files, prepared statements are used for most database queries. This helps
+                    protect the website from SQL injection and keeps the SQL easier to manage. The admin
+                    pages use PHP forms to insert and update product records, manage user account status,
+                    and change the site template stored in the database.
+                </p>
+
+                <p>
+                    Overall, the PHP and MySQL design is organized so that the catalogue can be updated
+                    through the admin interface while keeping the public pages dynamic and connected to
+                    the database.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="backButtonContainer">
+        <a href="Wiki.html" class="backButton">&larr; Back to Wiki</a>
+    </div>
+
+    <div class="backButtonContainer">
+        <a href="../index.php" class="backButton">&larr; Back to Home</a>
+    </div>
+
+</body>
+</html>
