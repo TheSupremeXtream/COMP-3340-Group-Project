@@ -2,7 +2,7 @@
 
 - Ronit Mahajan (110036557)
 - Shameer Sheikh (110126392)
-- David Woo
+- David Woo (110155141)
 - Raphael Ceradoy (110102284)
 
 ## Local Setup Instructions
