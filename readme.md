@@ -1,5 +1,10 @@
 # COMP-3340 Group Project
 
+- Ronit Mahajan (110036557)
+- Shameer Sheikh
+- David Woo
+- Raphael Ceradoy
+
 ## Local Setup Instructions
 
 ### Requirements
