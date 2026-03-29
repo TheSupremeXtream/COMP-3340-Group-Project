@@ -5,6 +5,9 @@
 - David Woo (110155141)
 - Raphael Ceradoy (110102284)
 
+- GitHub: https://github.com/TheSupremeXtream/COMP-3340-Group-Project
+- Live Website: https://thecomputerstore.fwh.is/
+
 ## Local Setup Instructions
 
 ### Requirements
