@@ -110,12 +110,13 @@ $cart_image = get_theme_cart_image();
             <h1>Store Overview</h1>
             <div class="mediaVideo">
                 <video controls width="100%">
+                <!-- Multimedia video -->
                 <source src="multimedia/promo.mp4" type="video/mp4">
                 </video>
             </div>
         </div>
     </main>
-    <!--Multimedia resources-->
+    <!-- Multimedia resources -->
     <audio id="whoosh" src="multimedia/whoosh.mp3" preload="auto"></audio>
     <audio id="bell" src="multimedia/bell.mp3" preload="auto"></audio>
     <script src="backend/assets/js/whoosh.js"></script>
