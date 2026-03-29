@@ -1,3 +1,6 @@
+/* Shameer Sheikh worked on the frontend admin interface parts in this file. */
+
+/* Admin toolbar and search area */
 .adminToolbar {
     display: flex;
     justify-content: space-between;
@@ -24,6 +27,7 @@
     color: #222;
 }
 
+/* Admin buttons */
 .btnPrimary,
 .btnSecondary,
 .btnSmall {
@@ -71,6 +75,7 @@
     background: #5d0c13;
 }
 
+/* Status messages */
 .alertBar {
     margin-top: 18px;
     padding: 14px 16px;
@@ -90,6 +95,7 @@
     border: 1px solid #fca5a5;
 }
 
+/* Summary boxes */
 .summaryRow {
     display: flex;
     gap: 14px;
@@ -118,6 +124,7 @@
     font-size: 0.95rem;
 }
 
+/* User table */
 .dataTableWrap {
     overflow-x: auto;
     margin-top: 18px;
@@ -150,6 +157,7 @@
     background: #fafafa;
 }
 
+/* Status label styles */
 .statusPill {
     display: inline-flex;
     align-items: center;
@@ -189,6 +197,7 @@
     margin: 0;
 }
 
+/* Dark theme support */
 body.theme-dark .adminSearchInput {
     background: #0f172a;
     color: #e5e7eb;
@@ -242,6 +251,7 @@ body.theme-dark .dataTable tr:hover td {
     background: #172033;
 }
 
+/* Holiday theme support */
 body.theme-holiday .adminSearchInput {
     background: #fffdf9;
     color: #2f241b;
@@ -293,6 +303,7 @@ body.theme-holiday .dataTable tr:hover td {
     background: #fff8ef;
 }
 
+/* Responsive layout */
 @media (max-width: 700px) {
     .adminToolbar {
         flex-direction: column;

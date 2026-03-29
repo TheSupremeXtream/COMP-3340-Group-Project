@@ -1,4 +1,5 @@
 <?php
+/* Shameer Sheikh worked on the frontend admin interface parts in this file. */
 require_once __DIR__ . '/../config.php';
 
 require_admin();
@@ -9,6 +10,7 @@ $search = trim($_GET['q'] ?? '');
 $message = '';
 $message_class = 'success';
 
+/* Show status messages after product create or update */
 if (isset($_GET['msg'])) {
     $messages = [
         'created' => 'Product created successfully.',
@@ -20,6 +22,7 @@ if (isset($_GET['msg'])) {
     }
 }
 
+/* Load product records, with optional admin search filtering */
 try {
     $pdo = get_db();
 

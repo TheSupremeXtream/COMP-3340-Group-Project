@@ -1,3 +1,6 @@
+/* Shameer Sheikh worked on the frontend admin interface parts in this file. */
+
+/* Admin toolbar and search area */
 .adminToolbar {
     display: flex;
     justify-content: space-between;
@@ -36,6 +39,7 @@
     resize: vertical;
 }
 
+/* Admin buttons */
 .btnPrimary,
 .btnSecondary,
 .btnSmall {
@@ -83,6 +87,7 @@
     background: #5d0c13;
 }
 
+/* Status messages */
 .alertBar {
     margin-top: 18px;
     padding: 14px 16px;
@@ -102,6 +107,7 @@
     border: 1px solid #fca5a5;
 }
 
+/* Data table */
 .dataTableWrap {
     overflow-x: auto;
     margin-top: 18px;
@@ -134,6 +140,7 @@
     background: #fafafa;
 }
 
+/* Small status label styles */
 .statusPill {
     display: inline-flex;
     align-items: center;
@@ -164,6 +171,7 @@
     color: #374151;
 }
 
+/* Product form layout */
 .formGrid {
     display: grid;
     grid-template-columns: repeat(2, minmax(240px, 1fr));
@@ -244,6 +252,7 @@
     border-radius: 4px;
 }
 
+/* Dark theme support */
 body.theme-dark .adminSearchInput,
 body.theme-dark .adminSelect,
 body.theme-dark .adminInput,
@@ -308,6 +317,7 @@ body.theme-dark .inlineCode {
     color: #e5e7eb;
 }
 
+/* Holiday theme support */
 body.theme-holiday .adminSearchInput,
 body.theme-holiday .adminSelect,
 body.theme-holiday .adminInput,
@@ -371,6 +381,7 @@ body.theme-holiday .inlineCode {
     color: #2f241b;
 }
 
+/* Responsive layout adjustments */
 @media (max-width: 900px) {
     .formGrid {
         grid-template-columns: 1fr;

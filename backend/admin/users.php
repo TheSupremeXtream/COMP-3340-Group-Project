@@ -1,4 +1,5 @@
 <?php
+/* Shameer Sheikh worked on the frontend admin interface parts in this file. */
 require_once __DIR__ . '/../config.php';
 
 require_admin();
@@ -8,6 +9,7 @@ $search = trim($_GET['q'] ?? '');
 $message = '';
 $message_class = 'success';
 
+/* Handle enable and disable actions for customer accounts */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_id = (int) ($_POST['user_id'] ?? 0);
     $action = trim($_POST['action'] ?? '');
@@ -58,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+/* Load summary counts and user rows for the admin page */
 try {
     $pdo = get_db();
 

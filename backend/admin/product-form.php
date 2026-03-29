@@ -1,10 +1,12 @@
 <?php
+/* Shameer Sheikh worked on the frontend admin interface parts in this file. */
 require_once __DIR__ . '/../config.php';
 
 require_admin();
 
 $theme = get_active_theme();
 
+/* Product option types used in the admin form */
 $option_types = [
     'color' => 'Color',
     'storage' => 'Storage',
@@ -13,6 +15,7 @@ $option_types = [
     'wattage' => 'Wattage',
 ];
 
+/* Default product values for a new product form */
 $product = [
     'id' => 0,
     'category_id' => '',
@@ -26,6 +29,7 @@ $product = [
     'is_active' => 1,
 ];
 
+/* Default product option rows shown in the form */
 $product_options = [
     ['option_type' => 'color', 'option_value' => '', 'price_delta' => '0.00'],
     ['option_type' => 'color', 'option_value' => '', 'price_delta' => '0.00'],
@@ -35,6 +39,7 @@ $product_options = [
 $errors = [];
 $is_edit = false;
 
+/* Load category records for the category dropdown */
 try {
     $pdo = get_db();
     $categories = $pdo->query('SELECT id, name FROM categories ORDER BY name ASC')->fetchAll();
@@ -43,6 +48,7 @@ try {
     $errors[] = 'Unable to load categories: ' . $e->getMessage();
 }
 
+/* Load an existing product when an edit id is provided */
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
     $product_id = (int) $_GET['id'];
 
@@ -100,6 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
     }
 }
 
+/* Handle product create or update form submission */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $product['id'] = (int) ($_POST['product_id'] ?? 0);
     $product['category_id'] = trim($_POST['category_id'] ?? '');
@@ -116,6 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $submitted_options = [];
 
+    /* Read the three option rows from the form */
     for ($i = 1; $i <= 3; $i++) {
         $type = trim($_POST['option_type_' . $i] ?? 'color');
         $value = trim($_POST['option_value_' . $i] ?? '');
@@ -148,6 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ];
     }
 
+    /* Validate required product fields */
     if ($product['category_id'] === '' || !ctype_digit($product['category_id'])) {
         $errors[] = 'Please select a category.';
     }
@@ -172,6 +181,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = 'Please enter at least 2 product options.';
     }
 
+    /* Save the main product record and its option rows */
     if (empty($errors)) {
         try {
             $pdo = get_db();
