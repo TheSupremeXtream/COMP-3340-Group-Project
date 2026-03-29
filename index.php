@@ -94,8 +94,7 @@ $cart_image = get_theme_cart_image();
             <h1>Store Overview</h1>
             <div class="mediaVideo">
                 <video controls width="100%">
-                    <source src="multimedia/electronic.mp3" type="audio/mpeg">
-                    <!-- <source src="multimedia/main.mp4" type="video/mp4"> Temporarily commented-->
+                <source src="multimedia/promo.mp4" type="video/mp4">
                 </video>
             </div>
         </div>
